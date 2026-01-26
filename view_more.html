@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Innoveloper" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <title>Design Services | Innoveloper</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-main);
+        }
+        
+        .view-more-container {
+            min-height: 100vh;
+            background: var(--bg-dark);
+            background-image: var(--bg-gradient);
+            background-attachment: fixed;
+            padding: 0;
+        }
+        
+        
+        .view-more-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
+        .back-button-view-more {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--card-border);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-bottom: 40px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            line-height: 1.5;
+        }
+        
+        .back-button-view-more::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-blue);
+            transform: scaleY(0) translateY(100%);
+            transform-origin: bottom center;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: -1;
+            border-radius: inherit;
+            opacity: 0.9;
+        }
+        
+        .back-button-view-more:hover {
+            color: white;
+            border-color: var(--primary-blue);
+        }
+        
+        .back-button-view-more:hover::before {
+            transform: scaleY(1) translateY(0);
+            opacity: 1;
+        }
+        
+        /* Hero Section */
+        .hero-section-view {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 80px;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero-content {
+            position: relative;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-title {
+            text-align: center;
+        }
+        
+        .hero-subtitle {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            justify-content: center;
+        }
+        
+        .right-card {
+            display: none;
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-section-view {
+                grid-template-columns: 2fr 1fr;
+                text-align: left;
+            }
+            
+            .hero-content {
+                text-align: left;
+                margin: 0;
+            }
+            
+            .hero-title {
+                text-align: left;
+            }
+            
+            .hero-subtitle {
+                text-align: left;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .hero-buttons {
+                justify-content: flex-start;
+            }
+            
+            .right-card {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section-view {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .hero-3d-visual {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-3d-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 28px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+            background: radial-gradient(circle 400px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.25) 0%, transparent 70%);
+        }
+        
+        .hero-3d-visual:hover::before {
+            opacity: 1;
+        }
+        
+        .hero-3d-visual > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: clamp(2rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        .hero-title span {
+            color: var(--primary-blue);
+        }
+        
+        .hero-subtitle {
+            color: var(--text-dim);
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-hero {
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-hero-primary {
+            background: var(--primary-blue);
+            color: white;
+        }
+        
+        .btn-hero-secondary {
+            background: white;
+            color: black;
+        }
+        
+        .btn-hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-blue);
+            transform: scaleY(0) translateY(100%);
+            transform-origin: bottom center;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: -1;
+            border-radius: inherit;
+            opacity: 0.9;
+        }
+        
+        .btn-hero:hover {
+            color: white;
+        }
+        
+        .btn-hero:hover::before {
+            transform: scaleY(1) translateY(0);
+            opacity: 1;
+        }
+        
+        .right-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 28px;
+            padding: 40px;
+            backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .right-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 28px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.15s ease;
+            z-index: 0;
+            background: radial-gradient(circle 400px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.25) 0%, transparent 70%);
+        }
+        
+        .right-card:hover::before {
+            opacity: 1;
+        }
+        
+        .right-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .right-card-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .right-card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .right-card-desc {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .avatars-small {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .avatar-small {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid var(--bg-dark);
+            margin-left: -8px;
+        }
+        
+        .avatar-small:first-child {
+            margin-left: 0;
+        }
+        
+        .trusted-text {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+        
+        /* Design Ecosystem Section */
+        .ecosystem-section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .section-subtitle {
+            color: var(--text-dim);
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+        
+        .ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        
+        .ecosystem-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 28px;
+            padding: 40px;
+            backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .ecosystem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 28px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.15s ease;
+            z-index: 0;
+            background: radial-gradient(circle 400px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.25) 0%, transparent 70%);
+        }
+        
+        .ecosystem-card:hover::before {
+            opacity: 1;
+        }
+        
+        .ecosystem-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card-label {
+            color: var(--primary-blue);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .card-title-large {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .card-desc {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .card-tags {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .card-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .card-tag::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-blue);
+            transform: scaleY(0) translateY(100%);
+            transform-origin: bottom center;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: -1;
+            border-radius: inherit;
+            opacity: 0.9;
+        }
+        
+        .card-tag:hover {
+            color: white;
+            border-color: var(--primary-blue);
+        }
+        
+        .card-tag:hover::before {
+            transform: scaleY(1) translateY(0);
+            opacity: 1;
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+        }
+        
+        .card-full {
+            grid-column: span 8;
+        }
+        
+        .card-medium {
+            grid-column: span 4;
+        }
+        
+        .card-small {
+            grid-column: span 3;
+        }
+        
+        .card-wide {
+            grid-column: span 5;
+        }
+        
+        .card-square {
+            grid-column: span 4;
+        }
+        
+        .icon-in-tag {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .motion-preview {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .motion-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .motion-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        
+        .view-reel-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            transition: color 0.3s;
+        }
+        
+        .view-reel-link:hover {
+            color: var(--primary-blue);
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+        
+        .tool-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .tool-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .tool-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        
+        @media (max-width: 1024px) {
+            .hero-section-view {
+                grid-template-columns: 1fr;
+            }
+            
+            .ecosystem-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+            
+            .card-full {
+                grid-column: span 6;
+            }
+            
+            .card-medium,
+            .card-square {
+                grid-column: span 3;
+            }
+            
+            .card-small {
+                grid-column: span 3;
+            }
+            
+            .card-wide {
+                grid-column: span 6;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .view-more-wrapper {
+                padding: 40px 20px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-3d-visual {
+                height: 300px;
+            }
+            
+            .ecosystem-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .card-full,
+            .card-medium,
+            .card-small,
+            .card-wide,
+            .card-square {
+                grid-column: span 1;
+            }
+            
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn-hero {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="view-more-container">
+        <div class="view-more-wrapper">
+            <a href="services.html" class="back-button-view-more">← Back to Services</a>
+            <!-- Hero Section -->
+            <section class="hero-section-view">
+                <div class="hero-content">
+                    <h1 class="hero-title">Visionary <span>Design</span> for Digital Pioneers</h1>
+                    <p class="hero-subtitle">Blending cinematic 3D artistry with functional architecture to craft the high-fidelity future of the web.</p>
+                    <div class="hero-buttons">
+                        <a href="our_process.html" class="btn-hero btn-hero-primary">Our Process</a>
+                    </div>
+                </div>
+                <div class="right-card">
+                    <div class="right-card-icon">✨</div>
+                    <h2 class="right-card-title">Refining the Digital Edge</h2>
+                    <p class="right-card-desc">We don't just build layouts; we engineer digital environments that breathe, react, and resonate.</p>
+                    <div class="avatars-small">
+                        <div class="avatar-small" style="background: #333;"></div>
+                        <div class="avatar-small" style="background: #444;"></div>
+                        <div class="avatar-small" style="background: #555;"></div>
+                        <span style="color: white; font-weight: 600; margin-left: 8px;">+200</span>
+                    </div>
+                    <p class="trusted-text">Trusted by leading tech innovators worldwide.</p>
+                </div>
+            </section>
+            
+            <!-- Design Ecosystem Section -->
+            <section class="ecosystem-section">
+                <h2 class="section-title">Design Ecosystem</h2>
+                <p class="section-subtitle">Our core disciplines converge to create unified brand experiences.</p>
+                
+                <div class="ecosystem-grid">
+                    <!-- UI/UX Architecture Card -->
+                    <div class="ecosystem-card card-full">
+                        <div class="card-label">PRODUCT STRATEGY</div>
+                        <h3 class="card-title-large">UI/UX Architecture</h3>
+                        <p class="card-desc">Beyond aesthetics, we build intuitive user journeys designed for high conversion and seamless accessibility.</p>
+                        <div class="card-tags">
+                            <span class="card-tag">
+                                <img src="https://img.icons8.com/ios-filled/16/3b82f6/figma.png" class="icon-in-tag" alt="Figma">
+                                Figma Pro
+                            </span>
+                            <span class="card-tag">
+                                <img src="https://img.icons8.com/ios-filled/16/ffffff/bar-chart.png" class="icon-in-tag" alt="Chart">
+                                Behavioral Data
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- UI Screenshot Card -->
+                    <div class="ecosystem-card card-medium">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80" class="card-image" alt="UI Dashboard">
+                    </div>
+                    
+                    <!-- Identity & Strategy Card -->
+                    <div class="ecosystem-card card-small">
+                        <div class="right-card-icon" style="margin-bottom: 20px;">🔐</div>
+                        <h3 class="card-title-large" style="font-size: 1.4rem;">Identity & Strategy</h3>
+                        <p class="card-desc" style="font-size: 0.9rem;">Crafting timeless visual languages that define market leaders and digital pioneers.</p>
+                        <div class="card-tags">
+                            <span class="card-tag">Logos</span>
+                            <span class="card-tag" style="background: var(--primary-blue); color: white; border-color: var(--primary-blue);">Type</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 3D Motion Graphics Card -->
+                    <div class="ecosystem-card card-wide">
+                        <div class="motion-preview"></div>
+                        <h3 class="card-title-large">3D Motion Graphics</h3>
+                        <p class="card-desc">Pushing boundaries with immersive depth. We specialize in Spline-based interactive 3D and cinematic product reveals.</p>
+                        <div class="motion-icons">
+                            <div class="motion-icon">▶</div>
+                            <div class="motion-icon">📷</div>
+                            <div class="motion-icon">⊞</div>
+                        </div>
+                        <a href="#" class="view-reel-link">View Reel →</a>
+                    </div>
+                    
+                    <!-- Craftsman's Arsenal Card -->
+                    <div class="ecosystem-card card-square">
+                        <h3 class="card-title-large" style="text-align: center; margin-bottom: 30px;">The Craftsman's Arsenal</h3>
+                        <div class="tools-grid">
+                            <div class="tool-item">
+                                <div class="tool-icon">▲</div>
+                                <div class="tool-name">Figma</div>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon">✏️</div>
+                                <div class="tool-name">Adobe CC</div>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon">◻</div>
+                                <div class="tool-name">Spline</div>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon">{ }</div>
+                                <div class="tool-name">Tailwind</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </div>
+        
+        <!-- Footer Component -->
+        <div id="footer"></div>
+    </div>
+    
+    <script src="components.js"></script>
+    <script src="common.js"></script>
+    <script>
+        // Initialize page with components
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Footer
+            document.getElementById('footer').innerHTML = createFooter({
+                socialLinks: [
+                    { href: 'https://www.linkedin.com/company/innoveloper', name: 'LinkedIn', label: 'LinkedIn' },
+                    { href: 'https://www.instagram.com/innoveloper/', name: 'Instagram', label: 'Instagram' },
+                    { href: 'https://www.youtube.com/@Innoveloper', name: 'YouTube', label: 'YouTube' }
+                ],
+                legalLinks: [
+                    { href: 'privacy_policy.html', text: 'Privacy Policy' },
+                    { href: 'terms_of_service.html', text: 'Terms of Service' }
+                ]
+            });
+            
+            // Initialize card glow effect for ecosystem cards
+            const ecosystemCards = document.querySelectorAll('.ecosystem-card, .right-card');
+            ecosystemCards.forEach(card => {
+                card.addEventListener('mousemove', function(e) {
+                    const rect = card.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    const y = ((e.clientY - rect.top) / rect.height) * 100;
+                    
+                    card.style.setProperty('--mouse-x', x + '%');
+                    card.style.setProperty('--mouse-y', y + '%');
+                });
+            });
+            
+            // Initialize button water fill effect
+            initButtonWaterFill();
+        });
+    </script>
+</body>
+</html>

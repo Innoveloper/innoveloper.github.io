@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Innoveloper" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <title>Terms of Service | Innoveloper</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .terms-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            color: var(--text-main);
+        }
+
+        .terms-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .terms-header h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .terms-header .last-updated {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        .terms-intro {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(12px);
+            line-height: 1.7;
+            color: var(--text-dim);
+        }
+
+        .terms-content {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 50px;
+            backdrop-filter: blur(12px);
+        }
+
+        .terms-section {
+            margin-bottom: 40px;
+        }
+
+        .terms-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .terms-section h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .terms-section p {
+            color: var(--text-dim);
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .terms-section ul {
+            color: var(--text-dim);
+            line-height: 1.8;
+            margin-left: 20px;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .terms-section li {
+            margin-bottom: 10px;
+        }
+
+        .back-link {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--card-border);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-bottom: 40px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-decoration: none;
+        }
+        
+        .back-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-blue);
+            transform: scaleY(0) translateY(100%);
+            transform-origin: bottom center;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: -1;
+            border-radius: inherit;
+            opacity: 0.9;
+        }
+        
+        .back-link:hover::before {
+            transform: scaleY(1) translateY(0);
+            opacity: 1;
+        }
+        
+        .back-link:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .terms-container {
+                padding: 40px 20px;
+            }
+
+            .terms-content {
+                padding: 30px 20px;
+            }
+
+            .terms-section h2 {
+                font-size: 1.2rem;
+            }
+
+            .terms-section p,
+            .terms-section ul {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .terms-container {
+                padding: 30px 15px;
+            }
+
+            .terms-content {
+                padding: 25px 15px;
+            }
+
+            .terms-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .terms-intro {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="terms-container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="terms-header">
+            <h1>Terms and Conditions</h1>
+            <p class="last-updated">Last Updated: 16th June, 2025</p>
+        </div>
+
+        <div class="terms-intro">
+            By downloading, installing, accessing, or using the RaktaCare application ("App"), you ("User," "you," or "your") agree to be bound by these Terms and Conditions ("Terms"). If you do not agree with any part of these Terms, you must not use the App.
+        </div>
+
+        <div class="terms-content">
+            <div class="terms-section">
+                <h2>1. Acceptance of Terms</h2>
+                <p>Your access to and use of the App is conditioned upon your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who wish to access or use the App.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>2. App Description</h2>
+                <p>RaktaCare is a platform designed to facilitate blood donation by:</p>
+                <ul>
+                    <li>Screening potential donors for health eligibility based on provided information.</li>
+                    <li>Providing educational articles and event information related to blood donation.</li>
+                    <li>Allowing users to request blood in emergency situations.</li>
+                    <li>Connecting donors and requesters in real-time during emergencies.</li>
+                    <li>Offering insights and updates through notifications and alerts.</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>3. Health Eligibility Screening</h2>
+                <p>The App provides a preliminary health eligibility screening based on information you input. This screening is for informational purposes only and does not constitute a medical diagnosis or guarantee eligibility to donate blood.</p>
+                <ul>
+                    <li>A final determination of eligibility will be made by qualified medical professionals at the blood donation center.</li>
+                    <li>You are responsible for providing accurate and truthful information during the screening process.</li>
+                    <li>RaktaCare is not responsible for any adverse health outcomes resulting from reliance on the App's screening results.</li>
+                    <li>If a donor is currently on medication and still chooses to accept a blood donation request, RaktaCare will not be held liable for any consequences.</li>
+                    <li>If a requester proceeds with a donor whose health screening is incomplete or not verified, RaktaCare assumes no responsibility for the outcome.</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>4. Information and Content</h2>
+                <ul>
+                    <li>The App provides articles, event information, and other content for educational and informational purposes only.</li>
+                    <li>This content should not be considered medical advice. Always consult with a qualified healthcare professional for any medical questions or concerns.</li>
+                    <li>RaktaCare makes no warranties regarding the accuracy, completeness, or reliability of the content provided.</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>5. Emergency Blood Requests</h2>
+                <ul>
+                    <li>The emergency blood request feature is intended to connect individuals in need with potential donors.</li>
+                    <li>RaktaCare does not guarantee the availability of blood or the response time of potential donors.</li>
+                    <li>You are responsible for verifying the identity and qualifications of any potential donor contacted through the App.</li>
+                    <li>In emergency situations, always contact emergency medical services in addition to using this App.</li>
+                    <li>RaktaCare will not be held liable for any negative outcome due to the use or disuse of the emergency blood request feature.</li>
+                    <li>RaktaCare does not charge any fees from donors or requesters for using the platform.</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>6. User Responsibilities</h2>
+                <ul>
+                    <li>You agree to use the App responsibly and in compliance with all applicable laws and regulations.</li>
+                    <li>You are responsible for maintaining the confidentiality of your account information.</li>
+                    <li>You agree not to use the App for any illegal or unauthorized purpose.</li>
+                    <li>You agree not to distribute or upload any malicious software or code to the App.</li>
+                    <li>You are responsible for any data charges that may accrue from App usage.</li>
+                    <li>By using the App, you affirm that all data and personal information you submit is accurate and truthful to the best of your knowledge.</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>7. App Usage and Responsibilities</h2>
+                <ul>
+                    <li>Users are expected to use RaktaCare solely for the purpose of genuine blood donation or emergency requests.</li>
+                    <li>Misuse of the App or its features (such as submitting false requests, impersonation, or fraudulent data entry) may lead to account suspension or termination.</li>
+                    <li>RaktaCare provides tools and connections but does not perform the donation procedure. All actual medical assessments and procedures are conducted by authorized professionals at certified blood banks or hospitals.</li>
+                    <li>The App also provides timely updates and notifications. By using the App, you consent to receive such communication, which may include alerts regarding donations, system updates, events, and policy changes.</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>8. Privacy Policy</h2>
+                <p>Your use of the App is also governed by our Privacy Policy, which outlines how we collect, use, and protect your personal information. By using the App, you consent to the collection and use of your information as described in the Privacy Policy. Please review our Privacy Policy.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>9. Intellectual Property</h2>
+                <ul>
+                    <li>The App and its content, including but not limited to text, graphics, images, and software, are protected by intellectual property laws.</li>
+                    <li>You may not reproduce, modify, distribute, or create derivative works based on the App or its content without our express written permission.</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>10. Disclaimer of Warranties</h2>
+                <ul>
+                    <li>The App is provided "as is" and "as available" without any warranties, express or implied.</li>
+                    <li>RaktaCare disclaims all warranties, including but not limited to warranties of merchantability, fitness for a particular purpose, and non-infringement.</li>
+                    <li>RaktaCare does not warrant that the App will be error-free, secure, or uninterrupted.</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>11. Limitation of Liability</h2>
+                <ul>
+                    <li>RaktaCare shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising from your use of the App.</li>
+                    <li>This limitation of liability applies regardless of the cause of action, including but not limited to breach of contract, negligence, or strict liability.</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>12. Modification of Terms</h2>
+                <ul>
+                    <li>RaktaCare reserves the right to modify these Terms at any time.</li>
+                    <li>We will notify you of any material changes to these Terms by posting the updated Terms on the App or via in-app notifications.</li>
+                    <li>Your continued use of the App after such changes have been published constitutes your agreement to the new terms.</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>13. Contact Information</h2>
+                <p>If you have any questions or concerns about these Terms, please contact us at: <a href="mailto:support@raktacare.com" style="color: var(--primary-blue); text-decoration: none;">support@raktacare.com</a>.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>14. Severability</h2>
+                <p>If any provision of these Terms is deemed invalid or unenforceable, the remaining provisions will remain in full force and effect.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>15. Entire Agreement</h2>
+                <p>These Terms and Conditions, along with the Privacy Policy, constitute the entire agreement between the user and RaktaCare regarding the use of the App.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

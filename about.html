@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Innoveloper" />
+  <link rel="manifest" href="/favicon/site.webmanifest" />
+  <title>About Us | Innoveloper</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <!-- Navigation Component -->
+  <div id="navigation"></div>
+
+    <!-- Story View (Hidden by default) -->
+  <div id="story-view" class="story-view-container" style="display: none;">
+    <div class="story-view-wrapper">
+      <button id="back-to-about" class="back-button">← Back</button>
+      <h1 class="story-title">Read Our Story</h1>
+      <div class="story-content-grid">
+        <!-- Left: Company Photo Card -->
+        <div class="card story-photo-card"></div>
+        <!-- Right: Story Content -->
+        <div class="story-text-content">
+          <div>
+            <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: var(--primary-blue);">Our Journey</h2>
+            <p style="font-size: 1rem; line-height: 1.8; color: var(--text-dim); margin-bottom: 20px;">
+              Founded with a vision to bridge the gap between cutting-edge technology and human-centered design, Innoveloper Solutions emerged from a simple belief: great software should be both powerful and intuitive.
+            </p>
+            <p style="font-size: 1rem; line-height: 1.8; color: var(--text-dim); margin-bottom: 20px;">
+              What started as a small team of passionate developers has grown into a full-service digital agency, but our core mission remains unchanged. We're not just building products—we're crafting experiences that matter.
+            </p>
+          </div>
+          <div>
+            <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: var(--primary-blue);">Our Philosophy</h2>
+            <p style="font-size: 1rem; line-height: 1.8; color: var(--text-dim); margin-bottom: 20px;">
+              At Innoveloper, we believe in the power of transparency, velocity, and craftsmanship. Every line of code we write, every design we create, and every solution we deliver is a testament to our commitment to excellence.
+            </p>
+            <p style="font-size: 1rem; line-height: 1.8; color: var(--text-dim); margin-bottom: 20px;">
+              We've worked with startups and enterprises alike, helping them navigate the complex landscape of digital transformation. Our approach is simple: understand the problem, engineer the solution, and deliver results that exceed expectations.
+            </p>
+          </div>
+          <div>
+            <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: var(--primary-blue);">Looking Forward</h2>
+            <p style="font-size: 1rem; line-height: 1.8; color: var(--text-dim);">
+              As we continue to grow, our focus remains on innovation, quality, and building lasting partnerships. The future of technology is exciting, and we're here to help shape it—one project at a time.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bento Grid: About Us Content aligned to the Reference Image -->
+  <main class="page-grid" id="about-main">
+
+    <!-- 1. Hero / Manifesto Card -->
+    <div class="card" style="grid-column: span 6; grid-row: span 2; background: linear-gradient(rgba(5,7,10,0.4), rgba(5,7,10,0.9)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80'); background-size: cover; display: flex; flex-direction: column; justify-content: center;">
+      <span class="badge">Our Manifesto</span>
+      <h1 style="font-size: 3.8rem; margin: 15px 0;">Architects of the <br><span style="color: var(--primary-blue);">Digital Future</span></h1>
+      <p class="hero-desc">We blend code and creativity to build software that matters. In a world of noise, we engineer signal.</p>
+      <div id="read-story-btn" data-story-button="true" style="margin-top: 40px; display: flex; align-items: center; gap: 15px; background: rgba(255,255,255,0.05); width: fit-content; padding: 12px 25px; border-radius: 100px; border: 1px solid var(--card-border); cursor: pointer; transition: all 0.3s;">
+        <span style="font-weight: 600;">Read Our Story</span>
+        <div style="width: 30px; height: 30px; border-radius: 50%; border: 1px solid white; display: flex; align-items: center; justify-content: center;">→</div>
+      </div>
+    </div>
+
+    <!-- 2. Experience Stat Card -->
+    <div class="card animated-number-card" style="grid-column: span 3; display: flex; flex-direction: column; justify-content: space-between;" data-number-value="1" data-number-suffix="+">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="icon-box" style="margin:0; background: rgba(59,130,246,0.15); color: var(--primary-blue);">🕒</div>
+      </div>
+      <div>
+        <h2 class="animated-number" style="font-size: 3.5rem;"><span class="number-value">0</span><span class="number-suffix">+</span></h2>
+        <p style="font-size: 0.7rem; letter-spacing: 1px; color: var(--text-dim); font-weight: 700;">YEARS EXPERIENCE</p>
+      </div>
+    </div>
+
+    <!-- 3. Growth Stat Card -->
+    <div class="card animated-number-card" style="grid-column: span 3; display: flex; flex-direction: column; justify-content: space-between;" data-number-value="120" data-number-suffix="%">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="icon-box" style="margin:0; background: rgba(59,130,246,0.15); color: var(--primary-blue);">📈</div>
+      </div>
+      <div>
+        <h2 class="animated-number" style="font-size: 3.5rem;"><span class="number-value">0</span><span class="number-suffix">%</span></h2>
+        <p style="font-size: 0.7rem; letter-spacing: 1px; color: var(--text-dim); font-weight: 700;">YOY GROWTH</p>
+      </div>
+    </div>
+
+    <!-- 4. The Innovators Card -->
+    <div class="card" style="grid-column: span 6;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+        <h3 style="font-size: 1.2rem; font-weight: 600;">The Innovators</h3>
+      </div>
+      <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 15px; flex: 1; min-width: 200px;">
+          <img src="https://media.licdn.com/dms/image/v2/D5603AQFC-rb5rn9eKA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1728546399479?e=1770854400&v=beta&t=w3QES5W0Xyl_OXCeeTvbt5fhLawpdhTmT0J8Vk5sP60" style="width: 55px; height: 55px; border-radius: 50%; flex-shrink: 0;" alt="Priyanka Fulwari">
+          <div style="min-width: 0;"><p style="font-weight: 700; font-size: 0.9rem; word-wrap: break-word;">Priyanka Fulwari</p><p style="font-size: 0.7rem; color: var(--primary-blue);">Co-founder</p></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 15px; flex: 1; min-width: 200px;">
+          <img src="https://media.licdn.com/dms/image/v2/D4D03AQF9CDcJNf4mMA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1692151906095?e=1770854400&v=beta&t=WWuDwpJr49_dvyVgphmjWkYlri0XCwFKtKjEzznpARw" style="width: 55px; height: 55px; border-radius: 50%; flex-shrink: 0;" alt="Jaypalsinh Barad">
+          <div style="min-width: 0;"><p style="font-weight: 700; font-size: 0.9rem; word-wrap: break-word;">Jaypalsinh Barad</p><p style="font-size: 0.7rem; color: var(--primary-blue);">Co-founder</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Map Card -->
+    <div class="card" style="grid-column: span 3; grid-row: span 2; background: linear-gradient(rgba(13, 18, 30, 0.6), rgba(13, 18, 30, 0.9)), url('https://api.maptiler.com/maps/basic-v2/static/-74,40.7,9/400x600.png?key=get_your_own_key'); background-size: cover; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="icon-box" style="background: var(--primary-blue); color: white;">🌐</div>
+        <h3 style="font-size: 1.8rem; margin-top: 15px;">Global<br>Footprint</h3>
+      </div>
+      <div style="font-size: 0.85rem;">
+        <p style="margin-bottom: 12px;"><span style="color:var(--primary-blue)">●</span> Ahmedabad, Gujarat, India (HQ)</p>
+      </div>
+    </div>
+
+    <!-- 6. Core Values Card -->
+    <div class="card" style="grid-column: span 4; grid-row: span 2;">
+      <div style="color: var(--primary-blue); font-size: 2.2rem; opacity: 0.3; font-family: serif; line-height: 0; margin-bottom: 10px;">"</div>
+      <p style="color: var(--primary-blue); font-weight: 800; font-size: 0.7rem; letter-spacing: 1.5px; margin-bottom: 25px;">OUR CORE</p>
+      <div style="display: flex; flex-direction: column; gap: 28px;">
+        <div><h4 style="font-size: 1rem;">Transparency</h4><p style="font-size: 0.8rem; color: var(--text-dim); line-height: 1.5; margin-top: 5px;">Open code, open communication. No black boxes.</p></div>
+        <div><h4 style="font-size: 1rem;">Velocity</h4><p style="font-size: 0.8rem; color: var(--text-dim); line-height: 1.5; margin-top: 5px;">Moving fast without breaking things. Precision speed.</p></div>
+        <div><h4 style="font-size: 1rem;">Craftsmanship</h4><p style="font-size: 0.8rem; color: var(--text-dim); line-height: 1.5; margin-top: 5px;">We treat your product like our own masterpiece.</p></div>
+      </div>
+    </div>
+
+    <!-- 7. Tech Stack Card -->
+    <div class="card tech-stack-card" style="grid-column: span 5; display: flex; align-items: center; justify-content: center; gap: 35px; background: rgba(255,255,255,0.02); flex-wrap: nowrap; overflow: hidden;">
+      <div style="font-size: 0.95rem; white-space: nowrap; flex-shrink: 0;">📱 Android</div>
+      <div style="font-size: 0.95rem; white-space: nowrap; flex-shrink: 0;">💙 Flutter</div>
+      <div style="font-size: 0.95rem; white-space: nowrap; flex-shrink: 0;">☁️ AWS</div>
+    </div>
+
+    <!-- 8. Ready to Innovate CTA Card -->
+    <div class="card" style="grid-column: span 5; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); display: flex; justify-content: space-between; align-items: center; overflow: hidden;">
+      <div style="max-width: 60%; flex-shrink: 1;">
+        <h3 style="font-size: 1.8rem; font-weight: 700;">Ready to innovate?</h3>
+        <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 8px;">Let's build something extraordinary together.</p>
+      </div>
+      <a href="contact_us.html" style="background: white; color: var(--primary-blue); padding: 12px 20px; border-radius: 12px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); white-space: nowrap; flex-shrink: 0;">
+        Let's Talk <span style="font-weight: 400;">→</span>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer Component -->
+  <div id="footer"></div>
+</div>
+
+<script src="components.js"></script>
+<script src="common.js"></script>
+<script>
+  // Initialize page with components
+  document.addEventListener('DOMContentLoaded', function() {
+    // Navigation
+    document.getElementById('navigation').innerHTML = createNavigation({
+      activeLink: 'about.html',
+      ctaButton: {
+        href: 'contact_us.html',
+        text: "Let's Talk",
+        style: 'border-radius: 12px; background: white; color: black; box-shadow: none;'
+      }
+    });
+    
+    // Initialize mobile menu after navigation is created
+    initMobileMenu();
+    
+    // Initialize animated numbers
+    initAnimatedNumbers();
+
+    // Footer with social links and legal links
+    document.getElementById('footer').innerHTML = createFooter({
+      socialLinks: [
+        { href: 'https://www.linkedin.com/company/innoveloper', name: 'LinkedIn', label: 'LinkedIn' },
+        { href: 'https://www.instagram.com/innoveloper/', name: 'Instagram', label: 'Instagram' },
+        { href: 'https://www.youtube.com/@Innoveloper', name: 'YouTube', label: 'YouTube' }
+      ],
+      legalLinks: [
+        { href: 'privacy_policy.html', text: 'Privacy Policy' },
+        { href: 'terms_of_service.html', text: 'Terms of Service' }
+      ]
+    });
+
+    // Story view functionality
+    const readStoryBtn = document.getElementById('read-story-btn');
+    const storyView = document.getElementById('story-view');
+    const aboutMain = document.getElementById('about-main');
+    const backBtn = document.getElementById('back-to-about');
+    const footer = document.getElementById('footer');
+    const navigation = document.getElementById('navigation');
+
+    // Prevent mobile menu from interfering
+    const menuToggle = document.querySelector('.menu-toggle');
+    if (menuToggle && readStoryBtn) {
+      // Ensure the button is not inside the menu toggle's event scope
+      readStoryBtn.style.position = 'relative';
+      readStoryBtn.style.zIndex = '100';
+    }
+
+    function showStory(e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      aboutMain.style.display = 'none';
+      storyView.style.display = 'block';
+      footer.style.display = 'block';
+      if (navigation) navigation.style.display = 'none';
+      
+      // Scroll to top when opening story view
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function hideStory(e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      storyView.style.display = 'none';
+      aboutMain.style.display = 'grid';
+      footer.style.display = 'block';
+      if (navigation) navigation.style.display = 'block';
+      // Scroll to top when closing story view
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    if (readStoryBtn) {
+      // Use capture phase and immediate stop to prevent any other handlers
+      readStoryBtn.addEventListener('click', function(e) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        showStory(e);
+        return false;
+      }, true);
+      
+      readStoryBtn.addEventListener('touchstart', function(e) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        showStory(e);
+        return false;
+      }, { passive: false, capture: true });
+      
+      readStoryBtn.addEventListener('touchend', function(e) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        showStory(e);
+        return false;
+      }, { passive: false, capture: true });
+      
+      readStoryBtn.addEventListener('mouseenter', function() {
+        this.style.background = 'rgba(255,255,255,0.1)';
+      });
+      readStoryBtn.addEventListener('mouseleave', function() {
+        this.style.background = 'rgba(255,255,255,0.05)';
+      });
+    }
+
+    if (backBtn) {
+      backBtn.addEventListener('click', hideStory, true);
+      backBtn.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        hideStory(e);
+      }, { passive: false });
+      backBtn.addEventListener('mouseenter', function() {
+        this.style.background = 'rgba(255,255,255,0.1)';
+      });
+      backBtn.addEventListener('mouseleave', function() {
+        this.style.background = 'rgba(255,255,255,0.05)';
+      });
+    }
+  });
+  
+  // Initialize animated numbers
+  function initAnimatedNumbers() {
+    const numberCards = document.querySelectorAll('.animated-number-card[data-number-value]');
+    
+    numberCards.forEach(card => {
+      const numberValue = parseFloat(card.getAttribute('data-number-value'));
+      const suffix = card.getAttribute('data-number-suffix') || '';
+      const numberElement = card.querySelector('.number-value');
+      
+      if (!numberElement) return;
+      
+      const duration = 2000; // 2 seconds
+      const steps = 60;
+      const increment = numberValue / steps;
+      const stepDuration = duration / steps;
+      let current = 0;
+      let step = 0;
+      
+      // Small delay to ensure DOM is ready
+      setTimeout(() => {
+        const timer = setInterval(() => {
+          step++;
+          current += increment;
+          
+          if (step >= steps) {
+            current = numberValue;
+            clearInterval(timer);
+          }
+          
+          // Format the number
+          let displayValue;
+          if (suffix === '%') {
+            displayValue = Math.floor(current);
+          } else {
+            displayValue = Math.floor(current);
+          }
+          
+          numberElement.textContent = displayValue;
+        }, stepDuration);
+      }, 100);
+    });
+  }
+</script>
+</body>
+</html>

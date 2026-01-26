@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Innoveloper" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <title>Case Studies | Innoveloper Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Required Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        /* Smooth grid transitions */
+        #case-studies-main {
+            transition: all 0.3s ease;
+        }
+        
+        #case-studies-main .card {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        /* Responsive grid adjustments - Desktop - Flexible Bento Grid */
+        @media (min-width: 1025px) {
+            #case-studies-main {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: 24px;
+                grid-auto-rows: minmax(200px, auto);
+                align-items: stretch;
+                grid-auto-flow: row dense;
+            }
+            
+            /* Ensure proper alignment and spacing */
+            #case-studies-main .card {
+                min-height: 200px;
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+            }
+            
+            /* Testimonial card - adjusted for content */
+            #case-studies-main .card:first-child {
+                grid-row: span 1;
+                min-height: auto;
+            }
+            
+            /* Process and Retention cards - medium height */
+            #case-studies-main .card[id="process-card-btn"],
+            #case-studies-main .card[style*="User Retention"] {
+                grid-row: span 1;
+                min-height: 250px;
+            }
+            
+            /* Large case study cards - adjusted for content without images */
+            #case-studies-main .card[style*="grid-column: span 6"]:not(:first-child) {
+                grid-row: span 1;
+                min-height: auto;
+            }
+            
+            /* Small case study cards */
+            #case-studies-main .card[style*="grid-column: span 3"]:not([id="process-card-btn"]):not([style*="User Retention"]) {
+                grid-row: span 1;
+                min-height: 350px;
+            }
+            
+            /* Cards with row direction - adjusted for content */
+            #case-studies-main .card[style*="flex-direction: row"] {
+                grid-row: span 1;
+                min-height: auto;
+            }
+            
+            /* CTA card at end */
+            #case-studies-main .card[style*="order: 999"] {
+                grid-row: span 1;
+                min-height: 250px;
+            }
+        }
+        
+        /* Tablet adjustments */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            #case-studies-main {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 20px;
+            }
+            
+            #case-studies-main .card[style*="grid-column: span 6"] {
+                grid-column: span 6 !important;
+            }
+            #case-studies-main .card[style*="grid-column: span 3"] {
+                grid-column: span 3 !important;
+            }
+            
+            /* Ensure cards maintain proper layout */
+            #case-studies-main .card {
+                min-height: auto;
+            }
+            
+            #case-studies-main .card[style*="flex-direction: row"] {
+                flex-direction: column !important;
+                min-height: 350px;
+            }
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            #case-studies-main {
+                display: flex !important;
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            #case-studies-main .card {
+                width: 100%;
+                min-height: auto;
+                display: flex;
+                flex-direction: column;
+                order: 0;
+            }
+            
+            #case-studies-main .card[style*="flex-direction: row"] {
+                flex-direction: column !important;
+            }
+            
+            /* Ensure images scale properly */
+            #case-studies-main .card img {
+                width: 100%;
+                height: auto;
+                max-height: 250px;
+                object-fit: cover;
+            }
+            
+            /* Adjust card padding for mobile */
+            #case-studies-main .card {
+                padding: 20px;
+            }
+            
+            /* Ensure text is readable */
+            #case-studies-main .card h2 {
+                font-size: 1.5rem;
+            }
+            
+            #case-studies-main .card p {
+                font-size: 0.9rem;
+            }
+            
+            /* Ensure CTA card appears at end */
+            #case-studies-main .card[style*="order: 999"] {
+                order: 999;
+            }
+        }
+        
+        /* Small mobile adjustments */
+        @media (max-width: 480px) {
+            #case-studies-main {
+                gap: 12px;
+            }
+            
+            #case-studies-main .card {
+                padding: 16px;
+            }
+            
+            #case-studies-main .card h2 {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Specific page overrides */
+        .hero-section { text-align: center; padding: 60px 0 80px; }
+        .main-title { font-size: 5rem; font-weight: 500; margin-bottom: 20px; }
+        .main-title span { font-family: 'Playfair Display', serif; color: var(--primary-blue); font-style: italic; }
+
+
+        .card-cta-blue { background: var(--primary-blue); text-align: center; align-items: center; justify-content: center; }
+
+        .stat-number { font-size: 3.5rem; font-weight: 700; margin-bottom: 5px; }
+        .testimonial-quote { font-size: 1.5rem; line-height: 1.4; font-style: italic; color: var(--text-main); margin-bottom: 25px; }
+
+        /* Social Icons Styling */
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+        .social-icon:hover { background: var(--primary-blue); transform: translateY(-3px); }
+        .social-icon svg { width: 18px; fill: white; }
+
+        @media (max-width: 1024px) {
+            .main-title { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Navigation Component -->
+    <div id="navigation"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero-section">
+        <div class="badge">PREMIUM CASE STUDIES</div>
+        <h1 class="main-title">Architecting the <span>Future.</span></h1>
+        <p class="hero-desc" style="margin: 0 auto;">
+            A curated selection of digital transformation and engineering excellence. We don't just build software; we engineer legacy.
+        </p>
+    </section>
+
+
+    <!-- Process View (Hidden by default) -->
+    <div id="process-view" class="process-view-container" style="display: none;">
+        <div class="process-view-wrapper">
+            <a href="case_studies.html" class="back-button-process">← Back to Case Studies</a>
+            <div class="process-header">
+                <div class="process-badge">OUR METHODOLOGY</div>
+                <h1 class="process-title">The Visionary Journey</h1>
+                <p class="process-subtitle">A seamless transition from abstract concept to high-performance deployment, powered by precision engineering.</p>
+            </div>
+            <div class="process-snake-container">
+                <div class="process-step process-step-right" data-step="1">
+                    <div class="process-step-number-large">01</div>
+                    <div class="process-step-content">
+                        <div class="step-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h2>Strategic Discovery</h2>
+                        <p>Before a single line of code is written, we analyze the core problem. We look at your goals through a lens of effectiveness and scalability. If it doesn't solve a real problem, we don't build it.</p>
+                    </div>
+                    <div class="process-dot process-dot-right"></div>
+                </div>
+                <div class="process-step process-step-left" data-step="2">
+                    <div class="process-step-number-large">02</div>
+                    <div class="process-step-content">
+                        <div class="step-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h2>Architecture & UI/UX</h2>
+                        <p>We create high-fidelity wireframes and user journeys that prioritize the modern user. Our design philosophy is "clean and intuitive"—ensuring your users get from point A to point B without friction.</p>
+                    </div>
+                    <div class="process-dot process-dot-left"></div>
+                </div>
+                <div class="process-step process-step-right" data-step="3">
+                    <div class="process-step-number-large">03</div>
+                    <div class="process-step-content">
+                        <div class="step-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 1V6M12 18V23M1 12H6M18 12H23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h2>Agile Development</h2>
+                        <p>Using the latest frameworks (React, Next.js, Node.js, Flutter), we build your product in sprints. You get regular updates and a transparent look at the codebase. We build for 10 million users, even if you're starting with ten.</p>
+                    </div>
+                    <div class="process-dot process-dot-right"></div>
+                </div>
+                <div class="process-step process-step-left" data-step="4">
+                    <div class="process-step-number-large">04</div>
+                    <div class="process-step-content">
+                        <div class="step-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                                <rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                                <rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                                <rect x="14" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h2>Radical QA & Stress Testing</h2>
+                        <p>We put every build through rigorous testing—automated and manual. We check for security vulnerabilities, load speed, and cross-platform performance to ensure your launch is flawless.</p>
+                    </div>
+                    <div class="process-dot process-dot-left"></div>
+                </div>
+                <div class="process-step process-step-right" data-step="5">
+                    <div class="process-step-number-large">05</div>
+                    <div class="process-step-content">
+                        <div class="step-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.5 16.5C4.5 16.5 6 14 12 14C18 14 19.5 16.5 19.5 16.5M4.5 16.5L2 19.5M19.5 16.5L22 19.5M12 4.5L12 10.5M12 10.5L15 7.5M12 10.5L9 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h2>Deployment & Evolution</h2>
+                        <p>We handle the cloud deployment (AWS/GCP/Azure) and ensure your system is live and stable. But we don't disappear after launch. We monitor performance and scale your product as your business grows.</p>
+                    </div>
+                    <div class="process-dot process-dot-right"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Case Studies Grid -->
+    <main class="page-grid" id="case-studies-main" style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; grid-auto-flow: row dense; grid-auto-rows: minmax(200px, auto);">
+
+        <!-- Testimonial Card -->
+        <div class="card" style="grid-column: span 6;">
+            <div style="color: var(--primary-blue); font-size: 3rem; margin-bottom: 10px;">“</div>
+            <p class="testimonial-quote">"Innoveloper didn't just write code; they completely re-architected how we think about our user journey."</p>
+            <!-- Commented out: James Carter name and circular avatar shape - keeping only the quote -->
+            <!-- <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="avatar" style="width: 40px; height: 40px; background: #333; border-radius: 50%;"></div>
+                <div>
+                    <p style="font-weight: 600; font-size: 0.9rem;">James Carter</p>
+                    <p style="color: var(--text-dim); font-size: 0.75rem;">CTO, FinEdge Global</p>
+                </div>
+            </div> -->
+        </div>
+
+        <!-- Process Card -->
+        <div id="process-card-btn" data-process-button="true" class="card" style="grid-column: span 3; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: all 0.3s;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div class="icon-box" style="background: rgba(255,255,255,0.05); color:white;">&lt; &gt;</div>
+                <div style="color: var(--text-dim); font-size: 1.2rem;">↗</div>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 10px;">Our Process</h3>
+                <p style="color: var(--text-dim); font-size: 0.85rem;">Explore how we go from concept to scalable code.</p>
+            </div>
+        </div>
+
+        <!-- Retention Stat Card -->
+        <div class="card animated-number-card" style="grid-column: span 3; text-align: center; display: flex; flex-direction: column; justify-content: center;" data-number-value="45" data-number-suffix="%">
+            <div class="stat-number animated-number"><span class="number-value">0</span><span class="number-suffix">+%</span></div>
+            <p style="color: var(--text-dim); font-size: 0.85rem; margin-bottom: 20px;">User Retention</p>
+            <div class="progress-container"><div class="progress-fill" style="width: 45%;"></div></div>
+        </div>
+
+        <!-- Raktacare Card -->
+        <div class="card" style="grid-column: span 6; display: flex; flex-direction: column; justify-content: flex-start; padding: 40px;">
+            <div class="tag-container" style="display: flex; gap: 8px; margin-bottom: 15px;">
+                <span class="badge" style="margin:0;">Healthcare</span>
+                <span class="badge" style="margin:0;">KMP</span>
+                <span class="badge" style="margin:0;">Cross-Platform</span>
+            </div>
+            <h2 style="margin-bottom: 15px;">Raktacare</h2>
+            <p class="hero-desc" style="font-size: 0.95rem; line-height: 1.6;">A cross-platform blood donation app developed with Kotlin Multiplatform (KMP) that connects blood donors with blood requesters who are in emergency or need blood.</p>
+        </div>
+
+        <!-- SnapPrint Card -->
+        <div class="card" style="grid-column: span 3; display: flex; flex-direction: column;">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80" style="width: 100%; height: 200px; object-fit: cover; border-radius: 16px; margin-bottom: 20px;" alt="SnapPrint">
+            <div class="badge" style="background: var(--primary-blue); color: white; border:none; margin-bottom: 15px;">WEB APP</div>
+            <h2>SnapPrint</h2>
+            <p class="hero-desc" style="font-size: 0.95rem;">A web application that allows customers to upload PDFs and images using QR codes, enabling shopkeepers to receive and print the uploaded files seamlessly.</p>
+        </div>
+
+        <!-- Sonik Mobility Card -->
+        <div class="card" style="grid-column: span 6; display: flex; flex-direction: column; justify-content: flex-start; padding: 40px;">
+            <div class="tag-container" style="display: flex; gap: 8px; margin-bottom: 15px;">
+                <span class="badge" style="margin:0;">Mobility</span>
+                <span class="badge" style="margin:0;">EV</span>
+                <span class="badge" style="margin:0;">Mobile App</span>
+            </div>
+            <h2 style="margin-bottom: 15px;">Sonik Mobility</h2>
+            <p class="hero-desc" style="font-size: 0.95rem; line-height: 1.6;">Sonik Mobility is committed to establishing the largest network of EV chargers in India. Our app allows users to locate fast charging stations, charge their EVs, make hassle-free payments, leave reviews, and connect with other plug-in EV vehicle owners.</p>
+        </div>
+
+        <!-- Baghdadi Sooq Card -->
+        <div class="card" style="grid-column: span 3; display: flex; flex-direction: column;">
+            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80" style="width: 100%; height: 200px; object-fit: cover; border-radius: 16px; margin-bottom: 20px;" alt="Baghdadi Sooq">
+            <div class="badge" style="background: var(--primary-blue); color: white; border:none; margin-bottom: 15px;">E-COMMERCE</div>
+            <h2>Baghdadi Sooq</h2>
+            <p class="hero-desc" style="font-size: 0.95rem;">An e-shopping application in Iraq affiliated with the Vision for Electronic Marketing Company, providing a comprehensive online marketplace experience.</p>
+        </div>
+
+        <!-- OE-XPERT Card -->
+        <div class="card" style="grid-column: span 3; display: flex; flex-direction: column;">
+            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80" style="width: 100%; height: 200px; object-fit: cover; border-radius: 16px; margin-bottom: 20px;" alt="OE-XPERT">
+            <div class="icon-box" style="margin-bottom: 20px; background: rgba(59,130,246,0.1); color: var(--primary-blue);">⚙️</div>
+            <h2>OE-XPERT</h2>
+            <p class="hero-desc" style="font-size: 0.95rem;">Provides complete control over your team's Operational Excellence Skill Analysis and puts your personal best to work towards achieving world-class manufacturing.</p>
+        </div>
+
+        <!-- CTA Card - Moved to end -->
+        <div class="card card-cta-blue" style="grid-column: span 3; order: 999;">
+            <div style="background: rgba(255,255,255,0.2); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </div>
+            <h3 style="margin-bottom: 10px;">Ready to Innovate?</h3>
+            <p style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 25px;">Let's build your success story.</p>
+            <a href="contact_us.html" style="color: white; font-weight: 700; text-decoration: underline; font-size: 0.8rem; letter-spacing: 1px;">GET IN TOUCH</a>
+        </div>
+
+    </main>
+
+    <!-- Footer Component -->
+    <div id="footer"></div>
+</div>
+
+<script src="components.js"></script>
+<script src="common.js"></script>
+<script>
+    // Initialize components after DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+        // Navigation
+        if (document.getElementById('navigation')) {
+            document.getElementById('navigation').innerHTML = createNavigation({
+                activeLink: 'case_studies.html',
+                ctaButton: {
+                    href: 'contact_us.html',
+                    text: "Let's Talk",
+                    style: 'border-radius: 12px; background: white; color: black; box-shadow: none;'
+                }
+            });
+            
+            // Initialize mobile menu after navigation is created
+            initMobileMenu();
+        }
+        
+        // Initialize animated numbers
+        initAnimatedNumbers();
+
+        // Footer with social links and legal links
+        if (document.getElementById('footer')) {
+            document.getElementById('footer').innerHTML = createFooter({
+                socialLinks: [
+                    { href: 'https://www.linkedin.com/company/innoveloper', name: 'LinkedIn', label: 'LinkedIn' },
+                    { href: 'https://www.instagram.com/innoveloper/', name: 'Instagram', label: 'Instagram' },
+                    { href: 'https://www.youtube.com/@Innoveloper', name: 'YouTube', label: 'YouTube' }
+                ],
+                legalLinks: [
+                    { href: 'privacy_policy.html', text: 'Privacy Policy' },
+                    { href: 'terms_of_service.html', text: 'Terms of Service' }
+                ]
+            });
+        }
+
+        // Process view functionality
+        const processCardBtn = document.getElementById('process-card-btn');
+        const processView = document.getElementById('process-view');
+        const caseStudiesMain = document.getElementById('case-studies-main');
+        const backBtn = document.getElementById('back-to-case-studies');
+        const footer = document.getElementById('footer');
+        const navigation = document.getElementById('navigation');
+
+        function showProcess(e) {
+            if (e) {
+                e.stopImmediatePropagation();
+                e.preventDefault();
+            }
+            
+            // In mobile, navigate to separate process page
+            if (window.innerWidth <= 768) {
+                window.location.href = 'our_process.html';
+                return;
+            }
+            
+            // Desktop: show inline
+            caseStudiesMain.style.display = 'none';
+            document.getElementById('hero-section').style.display = 'none';
+            processView.style.display = 'block';
+            footer.style.display = 'block';
+            if (navigation) navigation.style.display = 'none';
+            
+            // Initialize card glow effect for process view
+            setTimeout(() => {
+                initCardGlow();
+            }, 100);
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function hideProcess(e) {
+            if (e) {
+                e.stopImmediatePropagation();
+                e.preventDefault();
+            }
+            processView.style.display = 'none';
+            caseStudiesMain.style.display = 'grid';
+            document.getElementById('hero-section').style.display = 'block';
+            footer.style.display = 'block';
+            if (navigation) navigation.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        if (processCardBtn) {
+            // Track touch start position to distinguish between taps and scrolls
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let touchMoved = false;
+            let touchStartTime = 0;
+            
+            // Track touch start
+            processCardBtn.addEventListener('touchstart', function(e) {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+                touchMoved = false;
+                touchStartTime = Date.now();
+            }, { passive: true });
+            
+            // Track touch move to detect scrolling
+            processCardBtn.addEventListener('touchmove', function(e) {
+                if (touchStartTime > 0 && e.touches.length > 0) {
+                    const deltaX = Math.abs(e.touches[0].clientX - touchStartX);
+                    const deltaY = Math.abs(e.touches[0].clientY - touchStartY);
+                    // If touch moved more than 10px, it's a scroll, not a tap
+                    if (deltaX > 10 || deltaY > 10) {
+                        touchMoved = true;
+                    }
+                }
+            }, { passive: true });
+            
+            // Click handler with capture phase (for desktop)
+            processCardBtn.addEventListener('click', function(e) {
+                // Only handle click if it's not from a touch event
+                if (touchStartTime === 0 || (Date.now() - touchStartTime > 300)) {
+                    e.stopImmediatePropagation();
+                    e.preventDefault();
+                    showProcess(e);
+                }
+                // Reset touch tracking
+                touchMoved = false;
+                touchStartTime = 0;
+            }, true);
+            
+            // Touch end handler for mobile - only trigger if not scrolled
+            processCardBtn.addEventListener('touchend', function(e) {
+                if (touchStartTime > 0 && !touchMoved) {
+                    const touchDuration = Date.now() - touchStartTime;
+                    // Only trigger if it was a quick tap (< 500ms) and didn't move
+                    if (touchDuration < 500) {
+                        e.stopImmediatePropagation();
+                        e.preventDefault();
+                        showProcess(e);
+                    }
+                }
+                // Reset touch tracking
+                touchMoved = false;
+                touchStartTime = 0;
+            }, { passive: false, capture: true });
+            
+            // Hover effects for desktop
+            processCardBtn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+            });
+            processCardBtn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '';
+            });
+        }
+
+        if (backBtn) {
+            backBtn.addEventListener('click', hideProcess, true);
+            backBtn.addEventListener('touchstart', function(e) {
+                e.stopImmediatePropagation();
+                e.preventDefault();
+                hideProcess(e);
+            }, { passive: false, capture: true });
+            backBtn.addEventListener('mouseenter', function() {
+                this.style.background = 'rgba(255,255,255,0.1)';
+            });
+            backBtn.addEventListener('mouseleave', function() {
+                this.style.background = 'rgba(255,255,255,0.05)';
+            });
+        }
+
+        
+        // Initialize animated numbers
+        initAnimatedNumbers();
+    });
+    
+    // Initialize animated numbers function
+    function initAnimatedNumbers() {
+        const numberCards = document.querySelectorAll('.animated-number-card[data-number-value]');
+        
+        numberCards.forEach(card => {
+            const numberValue = parseFloat(card.getAttribute('data-number-value'));
+            const suffix = card.getAttribute('data-number-suffix') || '';
+            const numberElement = card.querySelector('.number-value');
+            
+            if (!numberElement) return;
+            
+            const duration = 2000; // 2 seconds
+            const steps = 60;
+            const increment = numberValue / steps;
+            const stepDuration = duration / steps;
+            let current = 0;
+            let step = 0;
+            
+            // Small delay to ensure DOM is ready
+            setTimeout(() => {
+                const timer = setInterval(() => {
+                    step++;
+                    current += increment;
+                    
+                    if (step >= steps) {
+                        current = numberValue;
+                        clearInterval(timer);
+                    }
+                    
+                    // Format the number
+                    let displayValue;
+                    if (suffix.includes('%')) {
+                        displayValue = Math.floor(current);
+                    } else {
+                        displayValue = Math.floor(current);
+                    }
+                    
+                    numberElement.textContent = displayValue;
+                }, stepDuration);
+            }, 100);
+        });
+    }
+</script>
+
+</body>
+</html>
