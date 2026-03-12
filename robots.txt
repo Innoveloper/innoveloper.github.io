@@ -1,0 +1,15 @@
+# robots.txt for innoveloper.com
+# Updated: March 2025
+
+User-agent: *
+Allow: /
+
+# Disallow admin or private paths if any (add as needed)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location - critical for Google indexing
+Sitemap: https://www.innoveloper.com/sitemap.xml
+
+# Crawl delay (optional - be polite to crawlers)
+Crawl-delay: 1
