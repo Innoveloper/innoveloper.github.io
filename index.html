@@ -1,271 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="msvalidate.01" content="4C1FC4553D22253842BDA483EFADCF82" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="Innoveloper" />
-  <link rel="manifest" href="/favicon/site.webmanifest" />
-  <title>Innoveloper | Mobile App & Website Development Company in Ahmedabad</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://www.innoveloper.com/">
+
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0d121e">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.innoveloper.com/">
+    <meta property="og:title" content="Innoveloper | Mobile App & Website Development in Ahmedabad">
+    <meta property="og:description"
+          content="We build Android apps, Flutter apps, and websites for startups and enterprises. Based in Ahmedabad, serving clients worldwide.">
+    <meta property="og:image" content="https://www.innoveloper.com/image/og-banner.png">
+
+    <!-- Schema Markup: tells Google this is a local IT business -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Innoveloper Solutions",
+            "url": "https://www.innoveloper.com",
+            "logo": "https://www.innoveloper.com/favicon/favicon-96x96.png",
+            "description": "Mobile app and website development company in Ahmedabad, India. We build Android, Flutter, and web applications.",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Ahmedabad",
+                "addressRegion": "Gujarat",
+                "postalCode": "380001",
+                "addressCountry": "IN"
+            },
+            "telephone": "+91-9510564953",
+            "email": "contact@innoveloper.com",
+            "foundingDate": "2023",
+            "priceRange": "$$",
+            "sameAs": [
+                "https://www.linkedin.com/company/innoveloper",
+                "https://www.instagram.com/innoveloper/",
+                "https://www.youtube.com/@Innoveloper"
+            ],
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Development Services",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Android App Development"
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Flutter App Development"
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Website Development"
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Cloud Infrastructure on AWS"
+                        }
+                    }
+                ]
+            }
+        }
+    </script>
+
+    <meta name="description"
+          content="Innoveloper is a mobile app and website development company in Ahmedabad, India. We build Android, Flutter, and web applications for startups and enterprises.">
+    <meta name="keywords"
+          content="mobile app development Ahmedabad, Android app development India, Flutter development, website development Gujarat, IT company Ahmedabad">
+
+    <meta name="msvalidate.01" content="4C1FC4553D22253842BDA483EFADCF82"/>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg"/>
+    <link rel="shortcut icon" href="/favicon/favicon.ico"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png"/>
+    <meta name="apple-mobile-web-app-title" content="Innoveloper"/>
+    <link rel="manifest" href="/favicon/site.webmanifest"/>
+    <title>Innoveloper | Mobile App & Website Development Company in Ahmedabad</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Montserrat:wght@400;600;700;800&display=swap"
+          rel="stylesheet">
 </head>
 <body>
 <div class="container">
-  <!-- Navigation Component -->
-  <div id="navigation"></div>
+    <!-- Navigation Component -->
+    <div id="navigation"></div>
 
-  <main class="page-grid" id="page-content">
-    <!-- Content will be rendered here by JavaScript -->
-  </main>
+    <main class="page-grid" id="page-content">
+        <!-- Content will be rendered here by JavaScript -->
+    </main>
 
-  <!-- Footer Component -->
-  <div id="footer"></div>
-    </div>
+    <!-- Footer Component -->
+    <div id="footer"></div>
+</div>
 
 <script src="page-data.js"></script>
 <script src="components.js"></script>
 <script src="common.js"></script>
 <script>
-  // Initialize page with components
-  document.addEventListener('DOMContentLoaded', function() {
-    const data = PAGE_DATA.home;
-    const pageContent = document.getElementById('page-content');
-    
-    // Navigation
-    document.getElementById('navigation').innerHTML = createNavigation({
-      ctaButton: {
-        href: 'contact_us.html',
-        text: "Let's Talk",
-        style: 'border-radius: 12px; background: white; color: black; box-shadow: none;'
-      }
-    });
-    
-    // Initialize mobile menu after navigation is created
-    initMobileMenu();
+    // Initialize page with components
+    document.addEventListener('DOMContentLoaded', function() {
+      const data = PAGE_DATA.home;
+      const pageContent = document.getElementById('page-content');
 
-    // Build page content in order
-    const content = [
-      // Hero Card
-      createHeroCard({
-        ...data.hero,
-        gridSpan: 'span 8',
-        gridRow: 'span 2'
-      }),
-      // Stats Cards
-      ...data.stats.map(stat => createStatsCard({ ...stat, gridSpan: 'span 2' })),
-      // Service Cards Row 1
-      ...data.services.slice(0, 2).map(service => createServiceCard({ ...service, gridSpan: 'span 2' })),
-      // Culture Card
-      createCultureCard({
-        ...data.culture,
-        gridSpan: 'span 8'
-      }),
-      // Service Cards Row 2
-      ...data.services.slice(2, 4).map(service => createServiceCard({ ...service, gridSpan: 'span 2' })),
-      // CTA Card
-      createCTACard({
-        ...data.cta,
-        gridSpan: 'span 8'
-      })
-    ];
-
-    pageContent.innerHTML = content.join('\n');
-
-    // Initialize animated stats
-    initAnimatedStats();
-    
-    // Note: LinkedIn profile images should be added manually in page-data.js
-    // See comments in fetchLinkedInProfileImages() for instructions
-
-    // Footer with social links and legal links
-    document.getElementById('footer').innerHTML = createFooter({
-      socialLinks: [
-        { href: 'https://www.linkedin.com/company/innoveloper', name: 'LinkedIn', label: 'LinkedIn' },
-        { href: 'https://www.instagram.com/innoveloper/', name: 'Instagram', label: 'Instagram' },
-        { href: 'https://www.youtube.com/@Innoveloper', name: 'YouTube', label: 'YouTube' }
-      ],
-      legalLinks: [
-        { href: 'privacy_policy.html', text: 'Privacy Policy' },
-        { href: 'terms_of_service.html', text: 'Terms of Service' }
-      ]
-    });
-
-    // CTA Card - Get Started button functionality
-    const getStartedBtn = document.getElementById('cta-get-started-btn');
-    const emailInput = document.getElementById('cta-email-input');
-    
-    if (getStartedBtn && emailInput) {
-      getStartedBtn.addEventListener('click', async function() {
-        const email = emailInput.value.trim();
-        
-        if (!email) {
-          showToast('Please enter your email address', 'error');
-          return;
+      // Navigation
+      document.getElementById('navigation').innerHTML = createNavigation({
+        ctaButton: {
+          href: 'contact_us.html',
+          text: "Let's Talk",
+          style: 'border-radius: 12px; background: white; color: black; box-shadow: none;'
         }
-        
-        if (!isValidEmail(email)) {
-          showToast('Please enter a valid email address', 'error');
-          return;
-        }
-        
-        // Disable button and show loading state
-        getStartedBtn.disabled = true;
-        const originalText = getStartedBtn.innerHTML;
-        getStartedBtn.innerHTML = 'Subscribing... <span>⏳</span>';
-        
-        try {
-          // Encode email for URL
-          const encodedEmail = encodeURIComponent(email);
-          
-          // Make API request - GET with email as query parameter
-          const response = await fetch(`https://mail.jdbarad.duckdns.org/api/subscribe?email=${encodedEmail}`, {
-            method: 'GET',
-            headers: {
-              'Accept': 'application/json'
-            }
-          });
-          
-          // Check if response is ok
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+      });
+
+      // Initialize mobile menu after navigation is created
+      initMobileMenu();
+
+      // Build page content in order
+      const content = [
+        // Hero Card
+        createHeroCard({
+          ...data.hero,
+          gridSpan: 'span 8',
+          gridRow: 'span 2'
+        }),
+        // Stats Cards
+        ...data.stats.map(stat => createStatsCard({ ...stat, gridSpan: 'span 2' })),
+        // Service Cards Row 1
+        ...data.services.slice(0, 2).map(service => createServiceCard({ ...service, gridSpan: 'span 2' })),
+        // Culture Card
+        createCultureCard({
+          ...data.culture,
+          gridSpan: 'span 8'
+        }),
+        // Service Cards Row 2
+        ...data.services.slice(2, 4).map(service => createServiceCard({ ...service, gridSpan: 'span 2' })),
+        // CTA Card
+        createCTACard({
+          ...data.cta,
+          gridSpan: 'span 8'
+        })
+      ];
+
+      pageContent.innerHTML = content.join('\n');
+
+      // Initialize animated stats
+      initAnimatedStats();
+
+      // Note: LinkedIn profile images should be added manually in page-data.js
+      // See comments in fetchLinkedInProfileImages() for instructions
+
+      // Footer with social links and legal links
+      document.getElementById('footer').innerHTML = createFooter({
+        socialLinks: [
+          { href: 'https://www.linkedin.com/company/innoveloper', name: 'LinkedIn', label: 'LinkedIn' },
+          { href: 'https://www.instagram.com/innoveloper/', name: 'Instagram', label: 'Instagram' },
+          { href: 'https://www.youtube.com/@Innoveloper', name: 'YouTube', label: 'YouTube' }
+        ],
+        legalLinks: [
+          { href: 'privacy_policy.html', text: 'Privacy Policy' },
+          { href: 'terms_of_service.html', text: 'Terms of Service' }
+        ]
+      });
+
+      // CTA Card - Get Started button functionality
+      const getStartedBtn = document.getElementById('cta-get-started-btn');
+      const emailInput = document.getElementById('cta-email-input');
+
+      if (getStartedBtn && emailInput) {
+        getStartedBtn.addEventListener('click', async function() {
+          const email = emailInput.value.trim();
+
+          if (!email) {
+            showToast('Please enter your email address', 'error');
+            return;
           }
-          
-          const data = await response.json().catch(() => {
-            // If response is not JSON, return success message
-            return { success: true, message: 'Successfully subscribed!' };
-          });
-          
-          // Show success message
-          showToast(data.message || 'Successfully subscribed to our newsletter!', 'success');
-          
-          // Clear the input
-          emailInput.value = '';
-          
-        } catch (error) {
-          console.error('Error subscribing:', error);
-          showToast('Failed to subscribe. Please try again later.', 'error');
-        } finally {
-          // Re-enable button
-          getStartedBtn.disabled = false;
-          getStartedBtn.innerHTML = originalText;
-        }
-      });
 
-      // Also handle Enter key press
-      emailInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-          getStartedBtn.click();
-        }
-      });
-    }
-  });
+          if (!isValidEmail(email)) {
+            showToast('Please enter a valid email address', 'error');
+            return;
+          }
 
-  // Initialize animated stats - trigger on page load
-  function initAnimatedStats() {
-    const statsCards = document.querySelectorAll('.stats-card[data-stat-value]');
-    
-    // Animate immediately on page load
-    statsCards.forEach(card => {
-      if (!card.classList.contains('animated')) {
-        card.classList.add('animated');
-        // Small delay to ensure DOM is ready
-        setTimeout(() => {
-          animateStat(card);
-        }, 100);
+          // Disable button and show loading state
+          getStartedBtn.disabled = true;
+          const originalText = getStartedBtn.innerHTML;
+          getStartedBtn.innerHTML = 'Subscribing... <span>⏳</span>';
+
+          try {
+            // Encode email for URL
+            const encodedEmail = encodeURIComponent(email);
+
+            // Make API request - GET with email as query parameter
+            const response = await fetch(`https://mail.jdbarad.duckdns.org/api/subscribe?email=${encodedEmail}`, {
+              method: 'GET',
+              headers: {
+                'Accept': 'application/json'
+              }
+            });
+
+            // Check if response is ok
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json().catch(() => {
+              // If response is not JSON, return success message
+              return { success: true, message: 'Successfully subscribed!' };
+            });
+
+            // Show success message
+            showToast(data.message || 'Successfully subscribed to our newsletter!', 'success');
+
+            // Clear the input
+            emailInput.value = '';
+
+          } catch (error) {
+            console.error('Error subscribing:', error);
+            showToast('Failed to subscribe. Please try again later.', 'error');
+          } finally {
+            // Re-enable button
+            getStartedBtn.disabled = false;
+            getStartedBtn.innerHTML = originalText;
+          }
+        });
+
+        // Also handle Enter key press
+        emailInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            getStartedBtn.click();
+          }
+        });
       }
     });
-  }
-  
-  function animateStat(card) {
-    const statValue = parseFloat(card.getAttribute('data-stat-value'));
-    const suffix = card.getAttribute('data-stat-suffix');
-    const statType = card.getAttribute('data-stat-type');
-    const statNumberElement = card.querySelector('.stat-number');
-    
-    if (!statNumberElement) return;
-    
-    const duration = 2000; // 2 seconds
-    const steps = 60;
-    const increment = statValue / steps;
-    const stepDuration = duration / steps;
-    let current = 0;
-    let step = 0;
-    
-    const timer = setInterval(() => {
-      step++;
-      current += increment;
-      
-      if (step >= steps) {
-        current = statValue;
-        clearInterval(timer);
-      }
-      
-      // Format the number based on type
-      let displayValue;
-      if (statType === 'uptime') {
-        displayValue = current.toFixed(1);
-      } else {
-        displayValue = Math.floor(current);
-      }
-      
-      statNumberElement.textContent = displayValue;
-    }, stepDuration);
-  }
 
-  // Toast notification function
-  function showToast(message, type = 'success') {
-    // Remove existing toast if any
-    const existingToast = document.getElementById('toast-notification');
-    if (existingToast) {
-      existingToast.remove();
+    // Initialize animated stats - trigger on page load
+    function initAnimatedStats() {
+      const statsCards = document.querySelectorAll('.stats-card[data-stat-value]');
+
+      // Animate immediately on page load
+      statsCards.forEach(card => {
+        if (!card.classList.contains('animated')) {
+          card.classList.add('animated');
+          // Small delay to ensure DOM is ready
+          setTimeout(() => {
+            animateStat(card);
+          }, 100);
+        }
+      });
     }
 
-    // Create toast element
-    const toast = document.createElement('div');
-    toast.id = 'toast-notification';
-    toast.className = `toast toast-${type}`;
-    toast.textContent = message;
-    
-    // Add toast to body
-    document.body.appendChild(toast);
-    
-    // Show toast with animation
-    setTimeout(() => {
-      toast.classList.add('show');
-    }, 10);
-    
-    // Hide and remove toast after 3 seconds
-    setTimeout(() => {
-      toast.classList.remove('show');
-      setTimeout(() => {
-        toast.remove();
-      }, 300);
-    }, 3000);
-  }
+    function animateStat(card) {
+      const statValue = parseFloat(card.getAttribute('data-stat-value'));
+      const suffix = card.getAttribute('data-stat-suffix');
+      const statType = card.getAttribute('data-stat-type');
+      const statNumberElement = card.querySelector('.stat-number');
 
-  // Email validation function
-  function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  }
-  
-  // Function to fetch LinkedIn profile images
-  // Note: LinkedIn profile images are not publicly accessible via API
-  // To add profile images manually:
-  // 1. Go to the LinkedIn profile
-  // 2. Right-click on the profile picture
-  // 3. Select "Copy image address"
-  // 4. Paste the URL in the 'image' field in page-data.js
-  function fetchLinkedInProfileImages() {
-    // This function is kept for future use if a working service becomes available
-    // For now, images should be added manually in page-data.js
-    // The component will use manual URLs or fallback to placeholder images
-  }
+      if (!statNumberElement) return;
+
+      const duration = 2000; // 2 seconds
+      const steps = 60;
+      const increment = statValue / steps;
+      const stepDuration = duration / steps;
+      let current = 0;
+      let step = 0;
+
+      const timer = setInterval(() => {
+        step++;
+        current += increment;
+
+        if (step >= steps) {
+          current = statValue;
+          clearInterval(timer);
+        }
+
+        // Format the number based on type
+        let displayValue;
+        if (statType === 'uptime') {
+          displayValue = current.toFixed(1);
+        } else {
+          displayValue = Math.floor(current);
+        }
+
+        statNumberElement.textContent = displayValue;
+      }, stepDuration);
+    }
+
+    // Toast notification function
+    function showToast(message, type = 'success') {
+      // Remove existing toast if any
+      const existingToast = document.getElementById('toast-notification');
+      if (existingToast) {
+        existingToast.remove();
+      }
+
+      // Create toast element
+      const toast = document.createElement('div');
+      toast.id = 'toast-notification';
+      toast.className = `toast toast-${type}`;
+      toast.textContent = message;
+
+      // Add toast to body
+      document.body.appendChild(toast);
+
+      // Show toast with animation
+      setTimeout(() => {
+        toast.classList.add('show');
+      }, 10);
+
+      // Hide and remove toast after 3 seconds
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => {
+          toast.remove();
+        }, 300);
+      }, 3000);
+    }
+
+    // Email validation function
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    // Function to fetch LinkedIn profile images
+    // Note: LinkedIn profile images are not publicly accessible via API
+    // To add profile images manually:
+    // 1. Go to the LinkedIn profile
+    // 2. Right-click on the profile picture
+    // 3. Select "Copy image address"
+    // 4. Paste the URL in the 'image' field in page-data.js
+    function fetchLinkedInProfileImages() {
+      // This function is kept for future use if a working service becomes available
+      // For now, images should be added manually in page-data.js
+      // The component will use manual URLs or fallback to placeholder images
+    }
 </script>
 </body>
 </html>
