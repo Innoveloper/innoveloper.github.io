@@ -8,7 +8,7 @@ const PAGE_DATA = {
     hero: {
       badge: 'Premium Digital Agency',
       title: 'Growing <br>Digital Futures.',
-      description: 'We blend code and creativity to engineer the future of web experiences.',
+      description: "India's fastest-growing mobile app and software development company in Ahmedabad, Gujarat. We build Android, Flutter, and web applications.",
       backgroundImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80',
       buttons: [
         {
@@ -42,25 +42,25 @@ const PAGE_DATA = {
       {
         icon: '&lt;/&gt;',
         title: 'Custom Software',
-        description: 'Tailored engineering for complex problems.',
+        description: 'Tailored engineering for complex problems - Ahmedabad, India.',
         iconColor: '#3b82f6'
       },
       {
         icon: '☁️',
         title: 'Cloud Infra',
-        description: 'Scalable, secure, and resilient architecture.',
+        description: 'Scalable, secure, and resilient architecture for Indian startups.',
         iconColor: '#a855f7'
       },
       {
         icon: '📱',
         title: 'Mobile App Development',
-        description: 'Native and cross-platform mobile solutions.',
+        description: 'Native and cross-platform mobile solutions for Indian startups.',
         iconColor: '#3b82f6'
       },
       {
         icon: '🎨',
         title: 'Graphic Design',
-        description: 'Immersive experiences that convert.',
+        description: 'Immersive experiences that convert - Ahmedabad, India.',
         iconColor: '#10b981'
       }
     ],
