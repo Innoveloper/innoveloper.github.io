@@ -320,7 +320,7 @@ nav {
     font-weight: 700;
     font-size: 0.9rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -328,38 +328,49 @@ nav {
     animation: btnFadeIn 0.6s ease-out 0.3s both;
 }
 
-.btn-book:hover {
-    transform: translateY(-2px) scale(1.02);
-}
-
-.btn-book::before {
+/* Custom Cursor-Relative Smooth Blur Hover Fill */
+.btn-book::before,
+.btn-send::before,
+.btn-cta-white::before,
+#cta-get-started-btn::before,
+.back-button::before,
+.back-button-process::before,
+#read-story-btn::before,
+.btn-hero::before {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: var(--y, 50%);
+    left: var(--x, 50%);
+    width: 0;
+    height: 0;
     background: var(--primary-blue);
-    transform: scaleY(0) translateY(100%);
-    transform-origin: bottom center;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1), height 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease-out;
     z-index: -1;
-    border-radius: inherit;
-    opacity: 0.9;
+    opacity: 0;
+    filter: blur(32px);
+    pointer-events: none;
 }
 
-.btn-book:hover::before {
-    transform: scaleY(1) translateY(0);
+.btn-book:hover::before,
+.btn-send:hover::before,
+.btn-cta-white:hover::before,
+#cta-get-started-btn:hover::before,
+.back-button:hover::before,
+.back-button-process:hover::before,
+#read-story-btn:hover::before,
+.btn-hero:hover::before {
+    width: 300%;
+    height: 300%;
+    transform: translate(-50%, -50%) scale(1);
     opacity: 1;
 }
 
-.btn-book:hover {
-    color: white;
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
-}
-
-.btn-book:hover::before {
-    transform: scaleY(1);
+.btn-book:hover,
+.btn-hero:hover {
+    color: white !important;
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
 }
 
 /* Mobile Menu Toggle Button */
@@ -716,37 +727,10 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 24px; }
     position: relative;
     overflow: hidden;
     z-index: 1;
-    transition: color 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btn-send::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--primary-blue);
-    transform: scaleY(0) translateY(100%);
-    transform-origin: bottom center;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    z-index: -1;
-    border-radius: inherit;
-    opacity: 0.9;
-}
-
-.btn-send:hover::before {
-    transform: scaleY(1) translateY(0);
-    opacity: 1;
-}
-
-.btn-send:hover {
-    color: white;
-}
-
-.btn-send:hover::before {
-    transform: scaleY(1);
-}
+/* Send button hover handled globally above */
 
 /* CTA Button Water Wave Effect */
 .btn-cta-white,
@@ -754,41 +738,10 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 24px; }
     position: relative;
     overflow: hidden;
     z-index: 1;
-    transition: color 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btn-cta-white::before,
-#cta-get-started-btn::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--primary-blue);
-    transform: scaleY(0) translateY(100%);
-    transform-origin: bottom center;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    z-index: -1;
-    border-radius: inherit;
-    opacity: 0.9;
-}
-
-.btn-cta-white:hover::before,
-#cta-get-started-btn:hover::before {
-    transform: scaleY(1) translateY(0);
-    opacity: 1;
-}
-
-.btn-cta-white:hover,
-#cta-get-started-btn:hover {
-    color: white !important;
-}
-
-.btn-cta-white:hover::before,
-#cta-get-started-btn:hover::before {
-    transform: scaleY(1);
-}
+/* CTA button hover handled globally above */
 
 /* Info Cards */
 .info-header { display: flex; justify-content: space-between; align-items: center; }
@@ -2443,6 +2396,13 @@ footer {
     pointer-events: auto;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+    overflow: hidden;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+#read-story-btn:hover {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
 }
 
 #read-story-btn * {
@@ -2507,7 +2467,7 @@ footer {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: all 0.3s;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     font-family: var(--font-main);
     font-size: 0.9rem;
     position: relative;
@@ -2516,38 +2476,7 @@ footer {
     text-decoration: none;
 }
 
-.back-button::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--primary-blue);
-    transform: scaleY(0) translateY(100%);
-    transform-origin: bottom center;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    z-index: -1;
-    border-radius: inherit;
-    opacity: 0.9;
-}
-
-.back-button:hover::before {
-    transform: scaleY(1) translateY(0);
-    opacity: 1;
-}
-
-.back-button:hover {
-    color: white;
-}
-
-.back-button:hover::before {
-    transform: scaleX(1);
-}
-
-.back-button:hover {
-    background: rgba(255,255,255,0.1);
-}
+/* Back button hover handled globally above */
 
 .story-title {
     font-size: 3.5rem;
@@ -2788,7 +2717,7 @@ footer {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: all 0.3s;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     font-family: var(--font-main);
     font-size: 0.9rem;
     backdrop-filter: blur(12px);
@@ -2798,36 +2727,7 @@ footer {
     text-decoration: none;
 }
 
-.back-button-process::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--primary-blue);
-    transform: scaleY(0) translateY(100%);
-    transform-origin: bottom center;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    z-index: -1;
-    border-radius: inherit;
-    opacity: 0.9;
-}
-
-.back-button-process:hover::before {
-    transform: scaleY(1) translateY(0);
-    opacity: 1;
-}
-
-.back-button-process:hover::before {
-    transform: scaleX(1);
-}
-
-.back-button-process:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(255, 255, 255, 0.12);
-    transform: translateX(-5px);
-}
+/* Back button process hover handled globally above */
 
 .process-snake-container {
     position: relative;

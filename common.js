@@ -221,11 +221,8 @@ function initCardGlow() {
   });
 }
 
-/**
- * Initialize button water-fill animation
- */
 function initButtonWaterFill() {
-  const buttons = document.querySelectorAll('.btn-book, .btn-send, .back-button, .back-button-process, #cta-get-started-btn, button[type="submit"], a.btn-book, button:not(.menu-toggle)');
+  const buttons = document.querySelectorAll('.btn-book, .btn-send, .back-button, .back-button-process, #cta-get-started-btn, button[type="submit"], a.btn-book, button:not(.menu-toggle), #read-story-btn, .btn-hero');
   
   buttons.forEach(button => {
     if (button.classList.contains('menu-toggle')) return;
@@ -235,32 +232,8 @@ function initButtonWaterFill() {
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       
-      // Determine fill direction (opposite of cursor entry)
-      const width = rect.width;
-      const height = rect.height;
-      
-      let originX, originY;
-      
-      // Determine horizontal origin (opposite side from cursor)
-      if (x < width / 3) {
-        originX = '100%'; // Fill from right if cursor entered from left
-      } else if (x > (width * 2) / 3) {
-        originX = '0%'; // Fill from left if cursor entered from right
-      } else {
-        originX = x < width / 2 ? '100%' : '0%';
-      }
-      
-      // Determine vertical origin (opposite side from cursor)
-      if (y < height / 3) {
-        originY = '100%'; // Fill from bottom if cursor entered from top
-      } else if (y > (height * 2) / 3) {
-        originY = '0%'; // Fill from top if cursor entered from bottom
-      } else {
-        originY = y < height / 2 ? '100%' : '0%';
-      }
-      
-      button.style.setProperty('--fill-origin-x', originX);
-      button.style.setProperty('--fill-origin-y', originY);
+      button.style.setProperty('--x', x + 'px');
+      button.style.setProperty('--y', y + 'px');
     });
   });
 }
