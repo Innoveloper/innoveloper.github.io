@@ -704,11 +704,68 @@ function initLaunchCountdownTimer() {
 }
 
 /**
+ * Dynamically updates page SEO, Open Graph, and Twitter metadata during the pre-launch phase
+ */
+function initDynamicSEO() {
+  const launchTime = new Date('2026-07-12T00:00:00+05:30').getTime();
+  const now = Date.now();
+  
+  if (now >= launchTime) {
+    return; // Already launched - leave permanent business tags as defined in HTML files
+  }
+  
+  // 1. Dynamic Title Tag Update
+  document.title = `LAUNCHING JULY 12 | Innoveloper | High-Velocity Software Engineering`;
+  
+  // 2. Dynamic Description Update
+  let descMeta = document.querySelector('meta[name="description"]');
+  const launchDescription = "The new home for high-velocity software engineering drops on July 12, 2026. Zero bloated dev cycles. Pure engineering speed. Follow our live countdown.";
+  if (descMeta) {
+    descMeta.setAttribute('content', launchDescription);
+  } else {
+    descMeta = document.createElement('meta');
+    descMeta.setAttribute('name', 'description');
+    descMeta.setAttribute('content', launchDescription);
+    document.head.appendChild(descMeta);
+  }
+  
+  // Helper function to set or create meta elements
+  function setMetaProperty(name, content, isProperty = false) {
+    const selector = isProperty ? `meta[property="${name}"]` : `meta[name="${name}"]`;
+    let el = document.querySelector(selector);
+    if (el) {
+      el.setAttribute('content', content);
+    } else {
+      el = document.createElement('meta');
+      if (isProperty) {
+        el.setAttribute('property', name);
+      } else {
+        el.setAttribute('name', name);
+      }
+      el.setAttribute('content', content);
+      document.head.appendChild(el);
+    }
+  }
+  
+  // 3. Open Graph (OG) Social Tags
+  setMetaProperty('og:title', 'Innoveloper — Official Launch July 12, 2026', true);
+  setMetaProperty('og:description', 'We are re-engineering how digital products get built. See the countdown timer and explore our services live on July 12.', true);
+  
+  // 4. Twitter Card Social Tags
+  setMetaProperty('twitter:card', 'summary_large_image');
+  setMetaProperty('twitter:title', 'Innoveloper — Official Launch July 12, 2026');
+  setMetaProperty('twitter:description', 'We are re-engineering how digital products get built. See the countdown timer and explore our services live on July 12.');
+}
+
+/**
  * Initialize all common functionality when DOM is ready
  */
 document.addEventListener('DOMContentLoaded', function() {
   // Check launch countdown overlay
   initLaunchCountdownTimer();
+  
+  // Apply dynamic SEO parameters for pre-launch phase
+  initDynamicSEO();
 
   // Try to initialize immediately
   initMobileMenu();
