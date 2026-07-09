@@ -239,13 +239,12 @@ function initButtonWaterFill() {
 }
 
 /**
- * Initialize header cursor glow effect
+ * Initialize Header Cursor Glow Effect
  */
 function initHeaderCursorGlow() {
   const navLinks = document.querySelector('.nav-links');
   
   if (navLinks) {
-    // Initialize with no position to avoid center blink
     navLinks.style.setProperty('--cursor-x', '-100px');
     navLinks.style.setProperty('--cursor-y', '-100px');
     
@@ -259,16 +258,13 @@ function initHeaderCursorGlow() {
     });
     
     navLinks.addEventListener('mouseleave', function() {
-      // Hide glow when leaving
       navLinks.style.setProperty('--cursor-x', '-100px');
       navLinks.style.setProperty('--cursor-y', '-100px');
     });
     
-    // Prevent glow on tab selection/click
     const navItems = navLinks.querySelectorAll('a');
     navItems.forEach(item => {
       item.addEventListener('click', function() {
-        // Don't show glow on click
         navLinks.style.setProperty('--cursor-x', '-100px');
         navLinks.style.setProperty('--cursor-y', '-100px');
       });
@@ -277,9 +273,443 @@ function initHeaderCursorGlow() {
 }
 
 /**
+ * Initialize Full-Screen Countdown Splash Timer until Launch Date (July 12, 2026)
+ */
+function initLaunchCountdownTimer() {
+  // Launch Target Time: July 12, 2026 00:00:00 (GMT+05:30)
+  const launchTime = new Date('2026-07-12T00:00:00+05:30').getTime();
+  
+  // Developer bypass check: ?bypass=true in URL lets you view the actual pages
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('bypass') === 'true') {
+    document.body.classList.add('launch-ready');
+    return;
+  }
+  
+  const now = Date.now();
+  if (now >= launchTime) {
+    document.body.classList.add('launch-ready');
+    return; // Already launched
+  }
+  
+  // Create styles block
+  const styleEl = document.createElement('style');
+  styleEl.innerHTML = `
+    html.launch-blocking, html.launch-blocking body {
+      overflow: hidden !important;
+      height: 100% !important;
+    }
+    #launch-countdown-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #030712;
+      z-index: 9999999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #ffffff;
+    }
+    .countdown-grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      background-position: center center;
+      z-index: 1;
+    }
+    .countdown-aura {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(48, 92, 222, 0.15) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      pointer-events: none;
+      filter: blur(40px);
+    }
+    .countdown-content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 24px;
+      max-width: 600px;
+    }
+    .countdown-logo {
+      margin-bottom: 24px;
+      animation: pulseGlow 4s infinite ease-in-out;
+    }
+    .countdown-title {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 0.25em;
+      margin-bottom: 12px;
+      background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+    }
+    .countdown-subtitle {
+      font-size: 14px;
+      color: #94a3b8;
+      margin-bottom: 48px;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .countdown-timer {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .timer-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      padding: 24px;
+      min-width: 110px;
+      backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease;
+    }
+    .timer-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(48, 92, 222, 0.3);
+    }
+    .timer-card span {
+      font-size: 44px;
+      font-weight: 800;
+      font-family: monospace;
+      color: #305CDE;
+      line-height: 1;
+      margin-bottom: 10px;
+      text-shadow: 0 0 16px rgba(48, 92, 222, 0.4);
+    }
+    .timer-card label {
+      font-size: 10px;
+      color: #64748b;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+    .code-terminal {
+      width: 100%;
+      max-width: 480px;
+      background: rgba(13, 18, 29, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+      margin-bottom: 36px;
+      text-align: left;
+      font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    }
+    .terminal-chrome {
+      background: rgba(7, 11, 19, 0.95);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .chrome-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .chrome-dot.red { background: #ff5f56; }
+    .chrome-dot.yellow { background: #ffbd2e; }
+    .chrome-dot.green { background: #27c93f; }
+    .terminal-title {
+      font-size: 10px;
+      color: #475569;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .terminal-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+    .term-line {
+      display: block;
+    }
+    .term-line.comment { color: #475569; }
+    .term-line.command { color: #f8fafc; }
+    .term-line.command .prompt { color: #305CDE; font-weight: 750; margin-right: 6px; }
+    .term-line.success { color: #10b981; }
+    .term-line.info { color: #38bdf8; }
+    .term-line.warning { color: #fbbf24; }
+    .term-line.prompt { color: #f1f5f9; font-weight: 600; }
+    .term-line.prompt .cursor {
+      display: inline-block;
+      width: 7px;
+      height: 13px;
+      background: #305CDE;
+      margin-left: 4px;
+      animation: blink 1s infinite steps(2, start);
+      vertical-align: middle;
+    }
+    .countdown-launch-date {
+      font-size: 12px;
+      color: #475569;
+      margin-bottom: 36px;
+      font-family: monospace;
+      letter-spacing: 0.08em;
+    }
+    .countdown-socials {
+      display: flex;
+      gap: 28px;
+    }
+    .countdown-socials a {
+      color: #64748b;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      transition: color 0.3s ease;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .countdown-socials a:hover {
+      color: #305CDE;
+    }
+    @keyframes pulseGlow {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px rgba(48, 92, 222, 0.1));
+      }
+      50% {
+        transform: scale(1.03);
+        filter: drop-shadow(0 0 25px rgba(48, 92, 222, 0.35));
+      }
+    }
+    @keyframes blink {
+      to { visibility: hidden; }
+    }
+    @media (max-width: 600px) {
+      .timer-card {
+        min-width: 85px;
+        padding: 16px;
+      }
+      .timer-card span {
+        font-size: 32px;
+      }
+      .countdown-title {
+        font-size: 24px;
+      }
+      .code-terminal {
+        max-width: 90%;
+      }
+    }
+  `;
+  document.head.appendChild(styleEl);
+  
+  // Create overlay container
+  const overlay = document.createElement('div');
+  overlay.id = 'launch-countdown-overlay';
+  overlay.innerHTML = `
+    <div class="countdown-grid"></div>
+    <div class="countdown-aura"></div>
+    <div class="countdown-content">
+      <div class="countdown-logo">
+        <svg class="w-20 h-20" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M688.978 582.268H547.555L688.978 440.902L618.343 370.295L618.272 370.366L476.887 229.037H618.235L618.272 229L688.907 299.606L688.978 299.535L830.4 440.902L688.978 582.268Z" fill="#305CDE"/>
+          <path d="M335.422 440.902L476.845 440.902L335.422 582.268L406.057 652.875L406.128 652.804L547.513 794.133H406.165L406.128 794.17L335.493 723.563L335.422 723.634L194 582.268L335.422 440.902Z" fill="#305CDE"/>
+          <path d="M441.488 652.951L370.777 582.268L582.911 370.218L653.622 440.901L441.488 652.951Z" fill="#002060"/>
+          <path d="M741.602 352.336L670.891 423.02L600.18 352.336L670.891 281.653L741.602 352.336Z" fill="#002060"/>
+        </svg>
+      </div>
+      <h1 class="countdown-title">Innoveloper</h1>
+      <p class="countdown-subtitle">High-Velocity Software Engineering</p>
+      
+      <div class="countdown-timer">
+        <div class="timer-card">
+          <span id="countdown-days">00</span>
+          <label>Days</label>
+        </div>
+        <div class="timer-card">
+          <span id="countdown-hours">00</span>
+          <label>Hours</label>
+        </div>
+        <div class="timer-card">
+          <span id="countdown-minutes">00</span>
+          <label>Minutes</label>
+        </div>
+        <div class="timer-card">
+          <span id="countdown-seconds">00</span>
+          <label>Seconds</label>
+        </div>
+      </div>
+      
+      <div class="code-terminal">
+        <div class="terminal-chrome">
+          <span class="chrome-dot red"></span>
+          <span class="chrome-dot yellow"></span>
+          <span class="chrome-dot green"></span>
+          <span class="terminal-title">bash - innoveloper.sh</span>
+        </div>
+        <div class="terminal-body" id="countdown-terminal-body">
+          <!-- Live printed logs -->
+        </div>
+      </div>
+      
+      <div class="countdown-launch-date">TARGETING OFFICIAL LAUNCH: JULY 12, 2026 (GMT+5:30)</div>
+      
+      <div class="countdown-socials">
+        <a href="https://www.linkedin.com/company/innoveloper" target="_blank">LinkedIn</a>
+        <a href="https://www.instagram.com/innoveloper/" target="_blank">Instagram</a>
+        <a href="https://www.youtube.com/@Innoveloper" target="_blank">YouTube</a>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(overlay);
+  document.body.style.overflow = 'hidden';
+  document.body.classList.add('launch-ready');
+  document.documentElement.classList.add('launch-blocking');
+  
+  // Setup simulated IT terminal live logs
+  const terminalLines = [
+    { type: 'comment', text: '// Initializing high-velocity dev environment...' },
+    { type: 'command', text: 'npm run build:innoveloper' },
+    { type: 'success', text: '✓ 142 UI design tokens compiled successfully' },
+    { type: 'info', text: 'ℹ Optimizing cross-platform compilation speeds' },
+    { type: 'info', text: 'ℹ Human engineering matched with AI workflow tools' },
+    { type: 'warning', text: '⚠ Bypassing corporate PowerPoint presentations... Done' },
+    { type: 'prompt', text: 'Innoveloper Engine: READY_TO_LAUNCH' }
+  ];
+
+  const termBody = document.getElementById('countdown-terminal-body');
+  let heartbeatInterval = null;
+
+  if (termBody) {
+    let lineIdx = 0;
+    
+    function printNextLine() {
+      if (lineIdx >= terminalLines.length) {
+        startTerminalHeartbeat();
+        return;
+      }
+      
+      const line = terminalLines[lineIdx];
+      const el = document.createElement('span');
+      el.className = `term-line ${line.type}`;
+      
+      if (line.type === 'command') {
+        el.innerHTML = `<span class="prompt">$</span>${line.text}`;
+      } else if (line.type === 'prompt') {
+        el.innerHTML = `${line.text}<span class="cursor"></span>`;
+      } else {
+        el.innerText = line.text;
+      }
+      
+      termBody.appendChild(el);
+      lineIdx++;
+      
+      let delay = 500;
+      if (line.type === 'command') delay = 900;
+      setTimeout(printNextLine, delay);
+    }
+    
+    function startTerminalHeartbeat() {
+      const heartbeats = [
+        () => `ℹ [system] CPU usage: ${(Math.random() * 15 + 5).toFixed(1)}% | RAM: ${(Math.random() * 2 + 3).toFixed(2)}GB`,
+        () => `ℹ [engine] Active connection pipelines: OK`,
+        () => `✓ [sync] Design tokens match validated`,
+        () => `ℹ [speed] Current benchmark factor: ${(Math.random() * 0.2 + 2.3).toFixed(2)}x standard agency speed`
+      ];
+      
+      heartbeatInterval = setInterval(() => {
+        // Keep terminal body clean: max 8 lines total including prompt
+        while (termBody.children.length >= 8) {
+          termBody.removeChild(termBody.firstElementChild);
+        }
+        
+        const textFn = heartbeats[Math.floor(Math.random() * heartbeats.length)];
+        const text = textFn();
+        const type = text.startsWith('✓') ? 'success' : 'info';
+        
+        const el = document.createElement('span');
+        el.className = `term-line ${type}`;
+        el.innerText = text;
+        
+        // Find existing prompt element and insert the new log line right before it
+        const promptEl = termBody.querySelector('.term-line.prompt');
+        if (promptEl) {
+          termBody.insertBefore(el, promptEl);
+        } else {
+          termBody.appendChild(el);
+        }
+      }, 4000);
+    }
+    
+    setTimeout(printNextLine, 800);
+  }
+  
+  // Update loop
+  function updateTimer() {
+    const now = Date.now();
+    const distance = launchTime - now;
+    
+    if (distance < 0) {
+      clearInterval(timerInterval);
+      if (heartbeatInterval) clearInterval(heartbeatInterval);
+      overlay.remove();
+      document.body.style.overflow = '';
+      document.documentElement.classList.remove('launch-blocking');
+      return;
+    }
+    
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    document.getElementById('countdown-days').innerText = String(days).padStart(2, '0');
+    document.getElementById('countdown-hours').innerText = String(hours).padStart(2, '0');
+    document.getElementById('countdown-minutes').innerText = String(minutes).padStart(2, '0');
+    document.getElementById('countdown-seconds').innerText = String(seconds).padStart(2, '0');
+  }
+  
+  updateTimer();
+  const timerInterval = setInterval(updateTimer, 1000);
+}
+
+/**
  * Initialize all common functionality when DOM is ready
  */
 document.addEventListener('DOMContentLoaded', function() {
+  // Check launch countdown overlay
+  initLaunchCountdownTimer();
+
   // Try to initialize immediately
   initMobileMenu();
   initCardGlow();
@@ -296,4 +726,5 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(initHeaderCursorGlow, 100);
   setTimeout(initHeaderCursorGlow, 500);
 });
+
 

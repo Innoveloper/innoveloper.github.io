@@ -1,3 +1,12 @@
+/* Prevent flash of website content before countdown overlay loads */
+body {
+    transition: opacity 0.2s ease-in-out;
+}
+body:not(.launch-ready) {
+    opacity: 0 !important;
+    background-color: #030712 !important;
+}
+
 /* --- Root Colors & Typography --- */
 :root {
     --bg-dark: #05070a;
