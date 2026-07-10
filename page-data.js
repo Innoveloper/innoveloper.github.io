@@ -88,13 +88,13 @@ const PAGE_DATA = {
       innovators: [
         {
           name: 'Priyanka Fulwari',
-          role: 'Co-founder',
+          role: 'Co-founder & CEO',
           linkedin: 'https://www.linkedin.com/in/priyanka-fulwari/',
           image: 'https://media.licdn.com/dms/image/v2/D5603AQFC-rb5rn9eKA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1728546399479?e=1770854400&v=beta&t=w3QES5W0Xyl_OXCeeTvbt5fhLawpdhTmT0J8Vk5sP60' // Example: 'https://media.licdn.com/dms/image/...'
         },
         {
           name: 'Jaypalsinh Barad',
-          role: 'Co-founder',
+          role: 'Co-founder & CTO',
           linkedin: 'https://www.linkedin.com/in/jdbarad/',
           image: 'https://media.licdn.com/dms/image/v2/D4D03AQF9CDcJNf4mMA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1692151906095?e=1770854400&v=beta&t=WWuDwpJr49_dvyVgphmjWkYlri0XCwFKtKjEzznpARw' // Example: 'https://media.licdn.com/dms/image/...'
         }

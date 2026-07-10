@@ -237,14 +237,14 @@ function createCTACard(options) {
   } = options;
 
   return `
-    <div class="card cta-card" style="grid-column: ${gridSpan}; background: var(--primary-blue); display: flex; justify-content: space-between; align-items: center; padding: 40px 50px;">
+    <div class="card start-project-card" style="grid-column: ${gridSpan}; display: flex; justify-content: space-between; align-items: center; padding: 40px 50px; overflow: hidden; position: relative;">
       <div>
         <h2 style="font-size: 2.8rem; font-weight: 800; margin-bottom: 5px;">${title}</h2>
         <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem;">${description}</p>
       </div>
       <div style="display: flex; gap: 2px; background: rgba(255,255,255,0.15); padding: 8px; border-radius: 16px;">
         <input type="email" id="cta-email-input" placeholder="${placeholder}" style="background: transparent; border: none; padding: 0 15px; color: white; outline: none; width: 220px;" class="cta-input-white">
-        <button id="cta-get-started-btn" class="btn-cta-white" style="background: white; color: var(--primary-blue); border: none; padding: 12px 24px; border-radius: 12px; font-weight: 700; cursor: pointer; position: relative; overflow: hidden; z-index: 1; transition: color 0.3s ease;">${buttonText}</button>
+        <button id="cta-get-started-btn" class="btn-cta-white" style="background: white; color: var(--primary-blue); border: none; padding: 12px 24px; border-radius: 12px; font-weight: 700; cursor: pointer; position: relative; overflow: hidden; z-index: 1; transition: color 0.3s ease; white-space: nowrap; flex-shrink: 0;">${buttonText}</button>
       </div>
     </div>`;
 }

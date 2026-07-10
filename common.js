@@ -57,18 +57,18 @@ function initMobileMenu() {
         return;
       }
     }
-    
+
     // If this was a scroll gesture (touch moved), don't toggle menu
     if (touchMoved) {
       touchMoved = false;
       return;
     }
-    
+
     if (e) {
       e.preventDefault();
       e.stopPropagation();
     }
-    
+
     const isOpen = mobileDrawer.classList.contains('active');
     if (isOpen) {
       closeMenu();
@@ -90,7 +90,7 @@ function initMobileMenu() {
   }
 
   // Track touch start for menu toggle - ONLY on the button itself
-  menuToggle.addEventListener('touchstart', function(e) {
+  menuToggle.addEventListener('touchstart', function (e) {
     // Only track if touch starts on the menu toggle button
     const target = e.target || e.touches[0].target;
     if (isMenuToggleElement(target)) {
@@ -105,7 +105,7 @@ function initMobileMenu() {
     }
   }, { passive: true });
 
-  menuToggle.addEventListener('touchmove', function(e) {
+  menuToggle.addEventListener('touchmove', function (e) {
     // Only process if touch started on menu toggle and we have valid start coordinates
     if (touchStartTime > 0 && e.touches.length > 0) {
       const target = e.target || e.touches[0].target;
@@ -125,7 +125,7 @@ function initMobileMenu() {
   }, { passive: true });
 
   // Handle click event - ONLY on menu toggle button
-  menuToggle.addEventListener('click', function(e) {
+  menuToggle.addEventListener('click', function (e) {
     // Only handle if click is directly on menu toggle
     if (isMenuToggleElement(e.target)) {
       // Prevent default and stop propagation to avoid conflicts
@@ -137,7 +137,7 @@ function initMobileMenu() {
   }, true); // Use capture phase to handle early
 
   // Handle touchend - ONLY on menu toggle button
-  menuToggle.addEventListener('touchend', function(e) {
+  menuToggle.addEventListener('touchend', function (e) {
     // Only handle if touch ended on menu toggle and wasn't a scroll
     if (isMenuToggleElement(e.target) && touchStartTime > 0 && !touchMoved) {
       const touchDuration = Date.now() - touchStartTime;
@@ -152,10 +152,10 @@ function initMobileMenu() {
     touchMoved = false;
     touchStartTime = 0;
   }, { passive: false });
-  
+
   // Overlay should only be clickable when menu is open
   // Use capture phase and check if overlay is active before handling
-  overlay.addEventListener('click', function(e) {
+  overlay.addEventListener('click', function (e) {
     // Only close menu if overlay is active (menu is open)
     if (overlay.classList.contains('active')) {
       e.preventDefault();
@@ -165,7 +165,7 @@ function initMobileMenu() {
     }
   }, true);
 
-  overlay.addEventListener('touchend', function(e) {
+  overlay.addEventListener('touchend', function (e) {
     // Only close menu if overlay is active (menu is open)
     if (overlay.classList.contains('active')) {
       e.preventDefault();
@@ -177,7 +177,7 @@ function initMobileMenu() {
 
   // Close menu when clicking on a link
   mobileLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
+    link.addEventListener('click', function (e) {
       e.stopPropagation();
       closeMenu();
     });
@@ -196,24 +196,24 @@ function initMobileMenu() {
  */
 function initCardGlow() {
   const cards = document.querySelectorAll('.card');
-  
+
   cards.forEach(card => {
     let lastX = '50%';
     let lastY = '50%';
-    
-    card.addEventListener('mousemove', function(e) {
+
+    card.addEventListener('mousemove', function (e) {
       const rect = card.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 100;
       const y = ((e.clientY - rect.top) / rect.height) * 100;
-      
+
       lastX = x + '%';
       lastY = y + '%';
-      
+
       card.style.setProperty('--mouse-x', lastX);
       card.style.setProperty('--mouse-y', lastY);
     });
-    
-    card.addEventListener('mouseleave', function() {
+
+    card.addEventListener('mouseleave', function () {
       // Keep the last position instead of resetting to prevent blinking
       // The opacity transition will handle the fade out smoothly
       // Don't reset position to avoid the blink effect
@@ -223,15 +223,15 @@ function initCardGlow() {
 
 function initButtonWaterFill() {
   const buttons = document.querySelectorAll('.btn-book, .btn-send, .back-button, .back-button-process, #cta-get-started-btn, button[type="submit"], a.btn-book, button:not(.menu-toggle), #read-story-btn, .btn-hero');
-  
+
   buttons.forEach(button => {
     if (button.classList.contains('menu-toggle')) return;
-    
-    button.addEventListener('mouseenter', function(e) {
+
+    button.addEventListener('mouseenter', function (e) {
       const rect = button.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      
+
       button.style.setProperty('--x', x + 'px');
       button.style.setProperty('--y', y + 'px');
     });
@@ -243,28 +243,28 @@ function initButtonWaterFill() {
  */
 function initHeaderCursorGlow() {
   const navLinks = document.querySelector('.nav-links');
-  
+
   if (navLinks) {
     navLinks.style.setProperty('--cursor-x', '-100px');
     navLinks.style.setProperty('--cursor-y', '-100px');
-    
-    navLinks.addEventListener('mousemove', function(e) {
+
+    navLinks.addEventListener('mousemove', function (e) {
       const rect = navLinks.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      
+
       navLinks.style.setProperty('--cursor-x', x + 'px');
       navLinks.style.setProperty('--cursor-y', y + 'px');
     });
-    
-    navLinks.addEventListener('mouseleave', function() {
+
+    navLinks.addEventListener('mouseleave', function () {
       navLinks.style.setProperty('--cursor-x', '-100px');
       navLinks.style.setProperty('--cursor-y', '-100px');
     });
-    
+
     const navItems = navLinks.querySelectorAll('a');
     navItems.forEach(item => {
-      item.addEventListener('click', function() {
+      item.addEventListener('click', function () {
         navLinks.style.setProperty('--cursor-x', '-100px');
         navLinks.style.setProperty('--cursor-y', '-100px');
       });
@@ -278,20 +278,20 @@ function initHeaderCursorGlow() {
 function initLaunchCountdownTimer() {
   // Launch Target Time: July 12, 2026 00:00:00 (GMT+05:30)
   const launchTime = new Date('2026-07-12T00:00:00+05:30').getTime();
-  
+
   // Developer bypass check: ?bypass=true in URL lets you view the actual pages
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.get('bypass') === 'true') {
     document.body.classList.add('launch-ready');
     return;
   }
-  
+
   const now = Date.now();
   if (now >= launchTime) {
     document.body.classList.add('launch-ready');
     return; // Already launched
   }
-  
+
   // Create styles block
   const styleEl = document.createElement('style');
   styleEl.innerHTML = `
@@ -531,7 +531,7 @@ function initLaunchCountdownTimer() {
     }
   `;
   document.head.appendChild(styleEl);
-  
+
   // Create overlay container
   const overlay = document.createElement('div');
   overlay.id = 'launch-countdown-overlay';
@@ -590,12 +590,12 @@ function initLaunchCountdownTimer() {
       </div>
     </div>
   `;
-  
+
   document.body.appendChild(overlay);
   document.body.style.overflow = 'hidden';
   document.body.classList.add('launch-ready');
   document.documentElement.classList.add('launch-blocking');
-  
+
   // Setup simulated IT terminal live logs
   const terminalLines = [
     { type: 'comment', text: '// Initializing high-velocity dev environment...' },
@@ -612,17 +612,17 @@ function initLaunchCountdownTimer() {
 
   if (termBody) {
     let lineIdx = 0;
-    
+
     function printNextLine() {
       if (lineIdx >= terminalLines.length) {
         startTerminalHeartbeat();
         return;
       }
-      
+
       const line = terminalLines[lineIdx];
       const el = document.createElement('span');
       el.className = `term-line ${line.type}`;
-      
+
       if (line.type === 'command') {
         el.innerHTML = `<span class="prompt">$</span>${line.text}`;
       } else if (line.type === 'prompt') {
@@ -630,15 +630,15 @@ function initLaunchCountdownTimer() {
       } else {
         el.innerText = line.text;
       }
-      
+
       termBody.appendChild(el);
       lineIdx++;
-      
+
       let delay = 500;
       if (line.type === 'command') delay = 900;
       setTimeout(printNextLine, delay);
     }
-    
+
     function startTerminalHeartbeat() {
       const heartbeats = [
         () => `ℹ [system] CPU usage: ${(Math.random() * 15 + 5).toFixed(1)}% | RAM: ${(Math.random() * 2 + 3).toFixed(2)}GB`,
@@ -646,21 +646,21 @@ function initLaunchCountdownTimer() {
         () => `✓ [sync] Design tokens match validated`,
         () => `ℹ [speed] Current benchmark factor: ${(Math.random() * 0.2 + 2.3).toFixed(2)}x standard agency speed`
       ];
-      
+
       heartbeatInterval = setInterval(() => {
         // Keep terminal body clean: max 8 lines total including prompt
         while (termBody.children.length >= 8) {
           termBody.removeChild(termBody.firstElementChild);
         }
-        
+
         const textFn = heartbeats[Math.floor(Math.random() * heartbeats.length)];
         const text = textFn();
         const type = text.startsWith('✓') ? 'success' : 'info';
-        
+
         const el = document.createElement('span');
         el.className = `term-line ${type}`;
         el.innerText = text;
-        
+
         // Find existing prompt element and insert the new log line right before it
         const promptEl = termBody.querySelector('.term-line.prompt');
         if (promptEl) {
@@ -670,15 +670,15 @@ function initLaunchCountdownTimer() {
         }
       }, 4000);
     }
-    
+
     setTimeout(printNextLine, 800);
   }
-  
+
   // Update loop
   function updateTimer() {
     const now = Date.now();
     const distance = launchTime - now;
-    
+
     if (distance < 0) {
       clearInterval(timerInterval);
       if (heartbeatInterval) clearInterval(heartbeatInterval);
@@ -687,18 +687,18 @@ function initLaunchCountdownTimer() {
       document.documentElement.classList.remove('launch-blocking');
       return;
     }
-    
+
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
+
     document.getElementById('countdown-days').innerText = String(days).padStart(2, '0');
     document.getElementById('countdown-hours').innerText = String(hours).padStart(2, '0');
     document.getElementById('countdown-minutes').innerText = String(minutes).padStart(2, '0');
     document.getElementById('countdown-seconds').innerText = String(seconds).padStart(2, '0');
   }
-  
+
   updateTimer();
   const timerInterval = setInterval(updateTimer, 1000);
 }
@@ -709,14 +709,14 @@ function initLaunchCountdownTimer() {
 function initDynamicSEO() {
   const launchTime = new Date('2026-07-12T00:00:00+05:30').getTime();
   const now = Date.now();
-  
+
   if (now >= launchTime) {
     return; // Already launched - leave permanent business tags as defined in HTML files
   }
-  
+
   // 1. Dynamic Title Tag Update
   document.title = `LAUNCHING JULY 12 | Innoveloper | High-Velocity Software Engineering`;
-  
+
   // 2. Dynamic Description Update
   let descMeta = document.querySelector('meta[name="description"]');
   const launchDescription = "The new home for high-velocity software engineering drops on July 12, 2026. Zero bloated dev cycles. Pure engineering speed. Follow our live countdown.";
@@ -728,7 +728,7 @@ function initDynamicSEO() {
     descMeta.setAttribute('content', launchDescription);
     document.head.appendChild(descMeta);
   }
-  
+
   // Helper function to set or create meta elements
   function setMetaProperty(name, content, isProperty = false) {
     const selector = isProperty ? `meta[property="${name}"]` : `meta[name="${name}"]`;
@@ -746,11 +746,11 @@ function initDynamicSEO() {
       document.head.appendChild(el);
     }
   }
-  
+
   // 3. Open Graph (OG) Social Tags
   setMetaProperty('og:title', 'Innoveloper — Official Launch July 12, 2026', true);
   setMetaProperty('og:description', 'We are re-engineering how digital products get built. See the countdown timer and explore our services live on July 12.', true);
-  
+
   // 4. Twitter Card Social Tags
   setMetaProperty('twitter:card', 'summary_large_image');
   setMetaProperty('twitter:title', 'Innoveloper — Official Launch July 12, 2026');
@@ -760,10 +760,10 @@ function initDynamicSEO() {
 /**
  * Initialize all common functionality when DOM is ready
  */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   // Check launch countdown overlay
   initLaunchCountdownTimer();
-  
+
   // Apply dynamic SEO parameters for pre-launch phase
   initDynamicSEO();
 
@@ -772,7 +772,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initCardGlow();
   initButtonWaterFill();
   initHeaderCursorGlow();
-  
+
   // Also try after a short delay for dynamically created content
   setTimeout(initMobileMenu, 100);
   setTimeout(initMobileMenu, 500);
