@@ -633,7 +633,7 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 28px;
+    border-radius: inherit;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.15s ease, background 0.15s ease;
@@ -2171,6 +2171,86 @@ footer {
 .number-suffix {
     display: inline-block;
 }
+/* Tech Stack Card and Badges Styling */
+.tech-stack-card {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.tech-badges-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 32px 48px;
+    max-width: 550px;
+    width: 100%;
+}
+
+.tech-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+    white-space: nowrap;
+}
+
+.tech-badge .tech-emoji {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+/* Custom glow effects for each tech stack */
+.tech-badge.kotlin-mp:hover {
+    color: rgb(143, 66, 236);
+    text-shadow: 0 0 10px rgba(143, 66, 236, 0.4);
+    transform: translateY(-2px);
+}
+.tech-badge.kotlin-mp:hover .tech-emoji {
+    transform: scale(1.2) rotate(-5deg);
+}
+
+.tech-badge.flutter:hover {
+    color: rgb(2, 136, 209);
+    text-shadow: 0 0 10px rgba(2, 136, 209, 0.4);
+    transform: translateY(-2px);
+}
+.tech-badge.flutter:hover .tech-emoji {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.tech-badge.react:hover {
+    color: rgb(0, 216, 255);
+    text-shadow: 0 0 10px rgba(0, 216, 255, 0.4);
+    transform: translateY(-2px);
+}
+.tech-badge.react:hover .tech-emoji {
+    transform: scale(1.2) rotate(20deg);
+}
+
+.tech-badge.ktor:hover {
+    color: rgb(242, 47, 72);
+    text-shadow: 0 0 10px rgba(242, 47, 72, 0.4);
+    transform: translateY(-2px);
+}
+.tech-badge.ktor:hover .tech-emoji {
+    transform: scale(1.2) translateY(-2px);
+}
+
+.tech-badge.spring:hover {
+    color: rgb(109, 179, 63);
+    text-shadow: 0 0 10px rgba(109, 179, 63, 0.4);
+    transform: translateY(-2px);
+}
+.tech-badge.spring:hover .tech-emoji {
+    transform: scale(1.2) rotate(-10deg);
+}
 
 /* Ensure tags stay in row on mobile for services page */
 @media (max-width: 768px) {
@@ -2191,21 +2271,15 @@ footer {
         white-space: nowrap;
     }
 
-    /* About page - Tech Stack Card responsive - keep in row like desktop */
+    /* About page - Tech Stack Card responsive */
     .tech-stack-card {
-        flex-wrap: nowrap !important;
-        overflow: visible !important;
-        gap: 35px !important;
-        justify-content: center !important;
-        align-items: center !important;
-        display: flex !important;
+        padding: 24px 16px !important;
     }
 
-    .tech-stack-card>div {
-        flex-shrink: 0 !important;
-        white-space: nowrap !important;
-        font-size: 0.95rem !important;
-        display: inline-block !important;
+    .tech-badges-wrapper {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 12px 16px !important;
     }
 
     /* Ready to Innovate card - no scroll */
