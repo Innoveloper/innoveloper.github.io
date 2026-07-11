@@ -758,6 +758,118 @@ function initDynamicSEO() {
 }
 
 /**
+ * Custom Scrollbar Functionality (Trackless, scroll/hover visible, draggable)
+ */
+function initCustomScrollbar() {
+  // Create Scrollbar Elements
+  const scrollContainer = document.createElement('div');
+  scrollContainer.className = 'custom-scrollbar-container';
+  
+  const scrollThumb = document.createElement('div');
+  scrollThumb.className = 'custom-scrollbar-thumb';
+  
+  scrollContainer.appendChild(scrollThumb);
+  document.body.appendChild(scrollContainer);
+
+  let scrollTimeout;
+  let isDragging = false;
+  let startY = 0;
+  let startScrollTop = 0;
+
+  // Function to update thumb height and position
+  function updateScrollbar() {
+    const scrollTop = window.scrollY;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
+
+    // Hide scrollbar if content is shorter than viewport
+    if (scrollHeight <= clientHeight) {
+      scrollContainer.style.display = 'none';
+      return;
+    } else {
+      scrollContainer.style.display = 'block';
+    }
+
+    const scrollPercent = scrollTop / (scrollHeight - clientHeight);
+    const thumbHeight = Math.max(40, (clientHeight / scrollHeight) * clientHeight);
+    const maxTop = clientHeight - thumbHeight;
+    const thumbTop = scrollPercent * maxTop;
+
+    scrollThumb.style.height = `${thumbHeight}px`;
+    scrollThumb.style.transform = `translateY(${thumbTop}px)`;
+  }
+
+  // Show thumb on scroll and fade out after scrolling stops
+  function triggerScrollVisibility() {
+    scrollContainer.classList.add('scrolling');
+    clearTimeout(scrollTimeout);
+    
+    if (!isDragging) {
+      scrollTimeout = setTimeout(() => {
+        scrollContainer.classList.remove('scrolling');
+      }, 1000); // Fades out after 1 second of inactivity
+    }
+  }
+
+  window.addEventListener('scroll', () => {
+    updateScrollbar();
+    triggerScrollVisibility();
+  }, { passive: true });
+
+  window.addEventListener('resize', updateScrollbar);
+
+  // Implement Dragging Feature
+  scrollThumb.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startY = e.clientY;
+    startScrollTop = window.scrollY;
+    
+    document.body.classList.add('scrollbar-select-none');
+    scrollContainer.classList.add('scrolling');
+    
+    e.preventDefault(); // Prevents selection/focus behavior
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    
+    const deltaY = e.clientY - startY;
+    const clientHeight = document.documentElement.clientHeight;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const thumbHeight = scrollThumb.offsetHeight;
+    const maxTop = clientHeight - thumbHeight;
+    
+    const scrollRange = scrollHeight - clientHeight;
+    const scrollDelta = (deltaY / maxTop) * scrollRange;
+    
+    window.scrollTo(0, startScrollTop + scrollDelta);
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (isDragging) {
+      isDragging = false;
+      document.body.classList.remove('scrollbar-select-none');
+      triggerScrollVisibility(); // re-evaluates scroll timeout
+    }
+  });
+
+  // Initial setup
+  updateScrollbar();
+  
+  // Re-run setup using ResizeObserver to handle dynamic content loads and page size changes
+  if (window.ResizeObserver) {
+    const resizeObserver = new ResizeObserver(() => {
+      updateScrollbar();
+    });
+    resizeObserver.observe(document.body);
+  } else {
+    // Fallback for browsers without ResizeObserver
+    setTimeout(updateScrollbar, 500);
+    window.addEventListener('load', updateScrollbar);
+  }
+}
+
+/**
  * Initialize all common functionality when DOM is ready
  */
 document.addEventListener('DOMContentLoaded', function () {
@@ -766,6 +878,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Apply dynamic SEO parameters for pre-launch phase
   initDynamicSEO();
+
+  // Initialize custom scrollbar
+  initCustomScrollbar();
 
   // Try to initialize immediately
   initMobileMenu();

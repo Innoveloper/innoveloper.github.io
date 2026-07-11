@@ -3684,21 +3684,55 @@ html {
     background: rgba(59, 130, 246, 0.4);
 }
 
-/* Custom Website Scrollbar */
+/* Custom Website Scrollbar (Hidden default, custom thumb implemented in JS) */
+html {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
 html::-webkit-scrollbar {
-    width: 10px;
+    display: none; /* Chrome, Safari, and Opera */
 }
 
-html::-webkit-scrollbar-track {
-    background: #05070a;
+/* Custom Scrollbar Styling (No Track) */
+.custom-scrollbar-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 16px; /* Active hover zone on the right edge */
+    height: 100%;
+    z-index: 99999;
+    pointer-events: auto;
 }
 
-html::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.15);
+.custom-scrollbar-thumb {
+    position: absolute;
+    right: 4px;
+    width: 6px;
+    background: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
     border-radius: 10px;
-    border: 2px solid #05070a;
+    opacity: 0;
+    transition: opacity 0.3s ease, width 0.2s ease, right 0.2s ease, background-color 0.2s ease;
+    cursor: grab;
 }
 
-html::-webkit-scrollbar-thumb:hover {
+/* Active dragging cursor */
+.custom-scrollbar-thumb:active {
+    cursor: grabbing;
+}
+
+/* Show scrollbar thumb during scroll or hover */
+.custom-scrollbar-container.scrolling .custom-scrollbar-thumb,
+.custom-scrollbar-container:hover .custom-scrollbar-thumb {
+    opacity: 1;
+}
+
+/* Hovering directly over scrollbar container changes thumb color */
+.custom-scrollbar-container:hover .custom-scrollbar-thumb {
     background: var(--primary-blue);
+}
+
+/* Prevent text selection while dragging the scrollbar */
+.scrollbar-select-none {
+    user-select: none;
+    -webkit-user-select: none;
 }
