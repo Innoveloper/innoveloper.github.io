@@ -32,8 +32,8 @@ const PAGE_DATA = {
         type: 'progress'
       },
       {
-        icon: '🔄',
-        label: 'UPTIME GUARANTEE',
+        icon: '📈',
+        label: 'RELIABLE OPERATION',
         value: '99.9%',
         type: 'uptime'
       }
