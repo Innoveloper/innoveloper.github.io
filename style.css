@@ -509,7 +509,7 @@ nav {
 .mobile-nav-links {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px;
     margin-bottom: 40px;
 }
 
@@ -517,7 +517,7 @@ nav {
 @keyframes mobileLinkSlideIn {
     from {
         opacity: 0;
-        transform: translateX(-20px);
+        transform: translateX(-15px);
     }
 
     to {
@@ -529,15 +529,36 @@ nav {
 .mobile-nav-links a {
     color: var(--text-dim);
     text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 500;
-    padding: 15px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    padding: 18px 24px 18px 36px;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     position: relative;
-    border-radius: 8px;
-    margin: 4px 0;
+    border-radius: 12px;
+    margin: 2px 0;
+    display: block;
     animation: mobileLinkSlideIn 0.4s ease-out both;
+}
+
+/* Vertical line indicator on left */
+.mobile-nav-links a::before {
+    content: '';
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%) scaleY(0);
+    width: 3px;
+    height: 18px;
+    background: var(--primary-blue);
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+    transform-origin: center;
+}
+
+.mobile-nav-links a:hover::before,
+.mobile-nav-links a.active::before {
+    transform: translateY(-50%) scaleY(1);
 }
 
 .mobile-drawer.active .mobile-nav-links a:nth-child(1) {
@@ -558,26 +579,30 @@ nav {
 
 .mobile-nav-links a:hover {
     color: white;
-    background: rgba(59, 130, 246, 0.1);
-    transform: translateX(5px);
+    background: rgba(255, 255, 255, 0.03);
+    padding-left: 42px;
 }
 
 .mobile-nav-links a.active {
     color: white;
-    background: rgba(59, 130, 246, 0.15);
-    border: 1px solid rgba(59, 130, 246, 0.3);
-    border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding-left: 42px;
 }
 
 .mobile-nav-links a.active:hover {
-    background: rgba(59, 130, 246, 0.2);
-    border-color: rgba(59, 130, 246, 0.4);
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .mobile-drawer .btn-book {
     width: 100%;
     text-align: center;
     margin-top: 20px;
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
     animation: mobileLinkSlideIn 0.4s ease-out 0.3s both;
 }
 
@@ -4200,6 +4225,16 @@ html::-webkit-scrollbar {
     
     .mobile-drawer {
         padding: 80px 20px 20px;
+    }
+
+    .mobile-nav-links a {
+        font-size: 1.15rem !important;
+        padding: 14px 18px 14px 28px !important;
+    }
+
+    .mobile-nav-links a::before {
+        left: 12px !important;
+        height: 14px !important;
     }
 
     .tech-badges-wrapper {
