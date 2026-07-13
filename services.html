@@ -134,8 +134,7 @@
         <!-- 1. Mobile and Website Development (Left Anchor) -->
         <div class="card service-card"
              style="grid-column: span 6; grid-row: span 2; display: flex; flex-direction: column; background: linear-gradient(rgba(5,7,10,0.65), rgba(5,7,10,0.92)), url('image/service.png'); background-size: cover;">
-            <div class="logo-icon"
-                 style="background: rgba(59, 130, 246, 0.2); border: 1px solid rgba(59, 130, 246, 0.35); width: 60px; height: 60px; margin-bottom: 20px; font-size: 1.5rem;">
+            <div class="logo-icon logo-icon-large">
                 <img src="https://img.icons8.com/ios-filled/50/3b82f6/layers.png"
                      style="width: 24px;"/>
             </div>
@@ -145,7 +144,7 @@
             </div>
 
             <div style="margin-top: auto;">
-                <h2 style="font-size: 2.2rem; margin-bottom: 15px;">Mobile and Website
+                <h2 class="service-main-card-title" style="margin-bottom: 15px; font-weight: 700;">Mobile and Website
                     Development</h2>
                 <p style="color: var(--text-dim); margin-bottom: 30px; max-width: 480px; line-height: 1.6;">
                     As a leading mobile app development company in Ahmedabad, we build Android apps, Flutter applications, and Other Cross-platform solutions. We also craft responsive websites for startups and enterprises across India — engineered for speed, security, and growth.
@@ -164,7 +163,7 @@
              style="grid-column: span 6; display: flex; justify-content: space-between; align-items: center;">
             <div style="flex: 1;">
                 <div class="logo-icon" style="width:40px; height:40px; background: rgba(255,255,255,0.05); font-size: 1.2rem; margin-bottom: 20px;">☁️</div>
-                <h3 style="font-size: 1.6rem; margin-bottom: 12px;">Cloud Infrastructure</h3>
+                <h3 class="service-medium-card-title" style="margin-bottom: 12px; font-weight: 700;">Cloud Infrastructure</h3>
                 <p style="color: var(--text-dim); font-size: 0.95rem; line-height: 1.5; max-width: 280px;">
                     Scalable AWS cloud infrastructure for Indian startups and enterprises. We architect, deploy, and manage cloud systems that handle millions of users — from Ahmedabad to global scale.
                 </p>
@@ -183,8 +182,8 @@
         <div class="card client-retention-card animated-number-card"
              style="grid-column: span 3; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;"
              data-number-value="98" data-number-suffix="%">
-            <h2 class="animated-number"
-                style="font-size: 4.5rem; font-weight: 400; margin-bottom: -5px; font-family: 'Playfair Display', serif;">
+            <h2 class="animated-number service-stat-title"
+                style="font-weight: 400; margin-bottom: -5px; font-family: 'Playfair Display', serif;">
                 <span class="number-value">0</span><span class="number-suffix">%</span></h2>
             <p style="font-size: 0.75rem; font-weight: 800; color: var(--text-dim); letter-spacing: 2px;">
                 CLIENT RETENTION</p>
@@ -195,7 +194,7 @@
         <div class="card service-card"
              style="grid-column: span 3; background: linear-gradient(180deg, rgba(59,130,246,0.1) 0%, rgba(5,7,10,0) 100%);">
             <div class="logo-icon" style="width:40px; height:40px; background: rgba(255,255,255,0.05); font-size: 1.2rem; margin-bottom: 20px;">🎨</div>
-            <h3 style="font-size: 1.4rem; margin-bottom: 10px;">Graphic Designing</h3>
+            <h3 class="service-small-card-title" style="margin-bottom: 10px; font-weight: 700;">Graphic Designing</h3>
             <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.5;">
                 Logo design, brand identity, UI/UX design, and packaging — crafted for businesses across Ahmedabad and Gujarat. We turn your brand vision into a visual language that converts.
             </p>
@@ -206,7 +205,7 @@
              style="grid-column: span 3; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
                 <div class="logo-icon" style="width:40px; height:40px; background: rgba(255,255,255,0.05); font-size: 1.2rem; margin-bottom: 20px;">⚙️</div>
-                <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Full Stack, Database and API
+                <h3 class="service-small-card-title" style="margin-bottom: 10px; font-weight: 700;">Full Stack, Database and API
                     Development</h3>
                 <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.5;">
                     Full stack development using Spring Boot, PostgreSQL, and RESTful & GraphQL APIs. Trusted by startups in Ahmedabad and across India for scalable, production-ready backend systems.
@@ -225,7 +224,7 @@
              style="grid-column: span 5; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
                 <div class="logo-icon" style="width:40px; height:40px; background: rgba(255,255,255,0.05); font-size: 1.2rem; margin-bottom: 20px;">✨</div>
-                <h3 style="font-size: 1.3rem; margin-bottom: 10px;">And Many More in Designing</h3>
+                <h3 class="service-small-card-title" style="margin-bottom: 10px; font-weight: 700;">And Many More in Designing</h3>
                 <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.5;">Logo
                     designing, packaging, branding, UI/UX design, and comprehensive design solutions
                     to elevate your brand presence.</p>
@@ -239,13 +238,17 @@
         </div>
 
         <!-- 7. Start Project (Bottom Right Large) -->
-        <a href="contact_us.html" class="card start-project-card"
-           style="grid-column: span 4; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-            <div style="font-size: 2.5rem; margin-bottom: 15px;">📅</div>
-            <h2 style="font-size: 1.8rem; font-weight: 700; color: white; margin-bottom: 5px;">Start
-                Project</h2>
-            <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">Book a free strategy
-                call</p>
+        <a href="contact_us.html" class="card start-project-card interactive-cta-card"
+           style="grid-column: span 4; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 30px;">
+            <div class="cta-icon-container">
+                <span class="cta-emoji-icon">📅</span>
+            </div>
+            <h2 class="cta-card-heading">Start Project</h2>
+            <p class="cta-card-subtext">Book a free strategy call</p>
+            <div class="cta-arrow-btn">
+                <span>Let's Talk</span>
+                <div class="arrow-circle">→</div>
+            </div>
         </a>
 
     </main>
